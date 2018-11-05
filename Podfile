@@ -6,5 +6,7 @@ target 'CVNetworking' do
   use_frameworks!
 
   # Pods for CVNetworking
+  pod "Alamofire"
 
+  
 end
