@@ -15,13 +15,24 @@ class CVURLResponse: NSObject {
     var responseData: Data {
         set {
             self.contentString = String(data: newValue, encoding: .utf8)
-            self.content = try! JSONSerialization.jsonObject(with: newValue, options: JSONSerialization.ReadingOptions.mutableContainers) as? Dictionary
+            
+            do {
+                 self.content = try JSONSerialization.jsonObject(with: newValue, options: JSONSerialization.ReadingOptions.mutableContainers) as? Dictionary
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
         }
         get {
             if self.contentString != nil {
                 return self.contentString!.data(using: .utf8)!
             } else if self.content != nil {
-                return try! JSONSerialization.data(withJSONObject: self.content!, options: .prettyPrinted)
+                
+                do {
+                    return try JSONSerialization.data(withJSONObject: self.content!, options: .prettyPrinted)
+                } catch {
+                    return "".data(using: .utf8)!
+                }
+                
             } else {
                 return "".data(using: .utf8)!
             }

@@ -105,6 +105,7 @@
 		459AB74F218FF44700D6C0E2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				84DAB92521907C72007C854A /* Log */,
 				459AB75D2190237D00D6C0E2 /* Error */,
 				459AB75821901EDA00D6C0E2 /* URLResponse */,
 				459AB7532190140700D6C0E2 /* Cache */,
@@ -159,6 +160,13 @@
 				459AB75B2190224200D6C0E2 /* CVNetworkingError.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		84DAB92521907C72007C854A /* Log */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Log;
 			sourceTree = "<group>";
 		};
 		913567376E9131FF66CA9196 /* Frameworks */ = {
@@ -255,7 +263,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CVNetworking/Pods-CVNetworking-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-CVNetworking/Pods-CVNetworking-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -266,7 +274,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CVNetworking/Pods-CVNetworking-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CVNetworking/Pods-CVNetworking-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		50A7853A32B5A383E92F56EA /* [CP] Check Pods Manifest.lock */ = {

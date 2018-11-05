@@ -21,6 +21,4 @@ public enum CVNetworkingError {
         case timeout
         case noNetwork  // 默认除了超时以外的错误都是无网络错误。
     }
-    
-    
 }
