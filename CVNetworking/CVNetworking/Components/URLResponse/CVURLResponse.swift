@@ -41,7 +41,13 @@ class CVURLResponse: NSObject {
     var error: NSError?
     var requestId: Int = 0
     var request: NSURLRequest?
+    
     private(set) var isCache: Bool = false  // 用来判断数据是否是缓存
+    
+    /// 真实的参数
+    var actualRequestParams: Dictionary<String, Any>? { return self.request?.actualRequestParams }
+    /// 原始的参数
+    var originalRequestParams: Dictionary<String, Any>? { return self.request?.originalRequestParams }
     
     /// 初始化：只有数据，其他均默认，或为空
     /// 使用：从缓存中复原数据的情况下使用

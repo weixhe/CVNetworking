@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		452A26E02191278C00B176C5 /* CVNetLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A26DF2191278B00B176C5 /* CVNetLog.swift */; };
+		452A26E2219181D300B176C5 /* CVNetCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A26E1219181D300B176C5 /* CVNetCache.swift */; };
+		452A26E4219184BF00B176C5 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A26E3219184BF00B176C5 /* DictionaryExtension.swift */; };
+		452A26E82191962F00B176C5 /* NSURLRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A26E72191962F00B176C5 /* NSURLRequestExtension.swift */; };
 		459AB73C218FE8B400D6C0E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB73B218FE8B400D6C0E2 /* AppDelegate.swift */; };
 		459AB73E218FE8B400D6C0E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB73D218FE8B400D6C0E2 /* ViewController.swift */; };
 		459AB741218FE8B400D6C0E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 459AB73F218FE8B400D6C0E2 /* Main.storyboard */; };
@@ -16,13 +20,16 @@
 		459AB7572190148E00D6C0E2 /* CVMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB7562190148E00D6C0E2 /* CVMemoryCache.swift */; };
 		459AB75A21901EF100D6C0E2 /* CVURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB75921901EF100D6C0E2 /* CVURLResponse.swift */; };
 		459AB75C2190224200D6C0E2 /* CVNetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB75B2190224200D6C0E2 /* CVNetworkingError.swift */; };
-		459AB75F2190337E00D6C0E2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB75E2190337E00D6C0E2 /* StringExtension.swift */; };
 		459AB7612190498F00D6C0E2 /* CVDiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB7602190498F00D6C0E2 /* CVDiskCache.swift */; };
 		505861872BB59199E03CF0AC /* Pods_CVNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3640C6DC8DD9C7655C069AEE /* Pods_CVNetworking.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3640C6DC8DD9C7655C069AEE /* Pods_CVNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CVNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		452A26DF2191278B00B176C5 /* CVNetLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVNetLog.swift; sourceTree = "<group>"; };
+		452A26E1219181D300B176C5 /* CVNetCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVNetCache.swift; sourceTree = "<group>"; };
+		452A26E3219184BF00B176C5 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		452A26E72191962F00B176C5 /* NSURLRequestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSURLRequestExtension.swift; sourceTree = "<group>"; };
 		459AB738218FE8B400D6C0E2 /* CVNetworking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CVNetworking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		459AB73B218FE8B400D6C0E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		459AB73D218FE8B400D6C0E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -34,7 +41,6 @@
 		459AB7562190148E00D6C0E2 /* CVMemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVMemoryCache.swift; sourceTree = "<group>"; };
 		459AB75921901EF100D6C0E2 /* CVURLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVURLResponse.swift; sourceTree = "<group>"; };
 		459AB75B2190224200D6C0E2 /* CVNetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVNetworkingError.swift; sourceTree = "<group>"; };
-		459AB75E2190337E00D6C0E2 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		459AB7602190498F00D6C0E2 /* CVDiskCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVDiskCache.swift; sourceTree = "<group>"; };
 		4D5A105BC30AF830890C7DCC /* Pods-CVNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CVNetworking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CVNetworking/Pods-CVNetworking.debug.xcconfig"; sourceTree = "<group>"; };
 		718B1F98256EF6B72B64433D /* Pods-CVNetworking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CVNetworking.release.xcconfig"; path = "Pods/Target Support Files/Pods-CVNetworking/Pods-CVNetworking.release.xcconfig"; sourceTree = "<group>"; };
@@ -52,6 +58,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		452A26DE2191277300B176C5 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				452A26DF2191278B00B176C5 /* CVNetLog.swift */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
 		459AB72F218FE8B400D6C0E2 = {
 			isa = PBXGroup;
 			children = (
@@ -97,7 +111,8 @@
 		459AB74E218FF43B00D6C0E2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				459AB75E2190337E00D6C0E2 /* StringExtension.swift */,
+				452A26E3219184BF00B176C5 /* DictionaryExtension.swift */,
+				452A26E72191962F00B176C5 /* NSURLRequestExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -105,7 +120,7 @@
 		459AB74F218FF44700D6C0E2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				84DAB92521907C72007C854A /* Log */,
+				452A26DE2191277300B176C5 /* Log */,
 				459AB75D2190237D00D6C0E2 /* Error */,
 				459AB75821901EDA00D6C0E2 /* URLResponse */,
 				459AB7532190140700D6C0E2 /* Cache */,
@@ -124,6 +139,7 @@
 		459AB7532190140700D6C0E2 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
+				452A26E1219181D300B176C5 /* CVNetCache.swift */,
 				459AB7552190143900D6C0E2 /* DiskCache */,
 				459AB7542190142900D6C0E2 /* MemoryCache */,
 			);
@@ -160,13 +176,6 @@
 				459AB75B2190224200D6C0E2 /* CVNetworkingError.swift */,
 			);
 			path = Error;
-			sourceTree = "<group>";
-		};
-		84DAB92521907C72007C854A /* Log */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Log;
 			sourceTree = "<group>";
 		};
 		913567376E9131FF66CA9196 /* Frameworks */ = {
@@ -306,12 +315,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				452A26E82191962F00B176C5 /* NSURLRequestExtension.swift in Sources */,
 				459AB7572190148E00D6C0E2 /* CVMemoryCache.swift in Sources */,
-				459AB75F2190337E00D6C0E2 /* StringExtension.swift in Sources */,
 				459AB752218FF4B200D6C0E2 /* CVServiceProtocol.swift in Sources */,
+				452A26E2219181D300B176C5 /* CVNetCache.swift in Sources */,
 				459AB75A21901EF100D6C0E2 /* CVURLResponse.swift in Sources */,
+				452A26E4219184BF00B176C5 /* DictionaryExtension.swift in Sources */,
 				459AB7612190498F00D6C0E2 /* CVDiskCache.swift in Sources */,
 				459AB73E218FE8B400D6C0E2 /* ViewController.swift in Sources */,
+				452A26E02191278C00B176C5 /* CVNetLog.swift in Sources */,
 				459AB75C2190224200D6C0E2 /* CVNetworkingError.swift in Sources */,
 				459AB73C218FE8B400D6C0E2 /* AppDelegate.swift in Sources */,
 			);
@@ -466,6 +478,13 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers\"",
+					D,
+					DEBUG,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.caven.CVNetworking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
