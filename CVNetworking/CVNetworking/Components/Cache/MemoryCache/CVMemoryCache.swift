@@ -39,7 +39,7 @@ extension CVMemoryCache {
         let cacheObj = self.cache.object(forKey: key) ?? CVCachedObject()
         
         cacheObj.cacheTime = cacheTime
-        cacheObj.updateContent(response.responseData)
+        cacheObj.updateContent(response.data!)
         
         self.cache.setObject(cacheObj, forKey: key)
     }

@@ -6,7 +6,7 @@ target 'CVNetworking' do
   use_frameworks!
 
   # Pods for CVNetworking
-  pod "Alamofire"
-
+  pod 'Alamofire'
+  pod 'ReachabilitySwift'
   
 end

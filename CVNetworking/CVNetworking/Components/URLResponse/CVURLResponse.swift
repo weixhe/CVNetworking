@@ -8,89 +8,63 @@
 
 import UIKit
 
-class CVURLResponse: NSObject {
-    var status: CVNetworkingError.RequestError?
-    var contentString: String?
-    var content: Dictionary<String, Any>?
-    var responseData: Data {
-        set {
-            self.contentString = String(data: newValue, encoding: .utf8)
-            
-            do {
-                 self.content = try JSONSerialization.jsonObject(with: newValue, options: JSONSerialization.ReadingOptions.mutableContainers) as? Dictionary
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-        }
-        get {
-            if self.contentString != nil {
-                return self.contentString!.data(using: .utf8)!
-            } else if self.content != nil {
-                
-                do {
-                    return try JSONSerialization.data(withJSONObject: self.content!, options: .prettyPrinted)
-                } catch {
-                    return "".data(using: .utf8)!
-                }
-                
-            } else {
-                return "".data(using: .utf8)!
-            }
-        }
-    }
-    var error: NSError?
-    var requestId: Int = 0
-    var request: NSURLRequest?
+public class CVURLResponse: NSObject {
+    public var contentString: String { return getContentString() }
+    public var responseObj: [String:Any] { return getResponseObj() }
+    public var data: Data?
     
-    private(set) var isCache: Bool = false  // 用来判断数据是否是缓存
+    public var error: Error?
     
-    /// 真实的参数
-    var actualRequestParams: Dictionary<String, Any>? { return self.request?.actualRequestParams }
-    /// 原始的参数
-    var originalRequestParams: Dictionary<String, Any>? { return self.request?.originalRequestParams }
+    public var requestId: Int = 0
+    public var request: URLRequest?
     
+    public private(set) var isCache: Bool = false  // 用来判断数据是缓存数据，or 是请求的网络数据
+    
+    /// 有效的参数，即：出去公共参数之外，通过mananger的child提供
+    var effectiveParams: Dictionary<String, Any>?
+    /// 全部的参数，即：公共参数，通过service提供
+    var fullParams: Dictionary<String, Any>?
+}
+
+// MARK: - Lift Cycle
+public extension CVURLResponse {
     /// 初始化：只有数据，其他均默认，或为空
     /// 使用：从缓存中复原数据的情况下使用
-    init(data: Data) {
-        super.init()
-        self.responseData = data
-        self.status = self.responseStatus(with: nil)
+    public convenience init(data: Data) {
+        self.init()
+        self.data = data
         self.isCache = true
     }
     
     /// 初始化：请求完成，创建一个response
-    init(responseStr: String?, responseObj: Dictionary<String, Any>?, requestID: Int, request: NSURLRequest, error: NSError?) {
-        super.init()
-        self.contentString = responseStr
-        self.content = responseObj
-        self.error = error
+    public convenience init(data: Data? = nil, requestID: Int = 0, request: URLRequest? = nil, error: Error?) {
+        self.init()
+        self.data = data
         self.requestId = requestID
         self.request = request
-        self.status = self.responseStatus(with: error)
         self.isCache = false
+        self.error = error
     }
+    
 }
 
-// MARK: - 私有方法
+// MARK: - Getter Setter
 private extension CVURLResponse {
-    private func responseStatus(with error: NSError?) -> CVNetworkingError.RequestError {
-        if let error_ = error {
-            var status = CVNetworkingError.RequestError.noNetwork
-            
-            switch error_.code {
-            case NSURLErrorTimedOut:
-                status = .timeout
-            case NSURLErrorNotConnectedToInternet:
-                status = .noNetwork
-            case NSURLErrorCancelled:
-                status = .cancel
-            default:
-                status = .noNetwork
-            }
-            return status
-            
+    
+    func getContentString() -> String {
+        guard let data = data  else { return "" }
+        return String(data: data, encoding: .utf8) ?? ""
+    }
+    
+    func getResponseObj() -> [String:Any] {
+        let obj: [String:Any]
+        do {
+            guard let data = data  else { return [:] }
+            obj = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String : Any]
+        } catch {
+            obj = [:]
         }
-        return .success
+        return obj
     }
     
 }

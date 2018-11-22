@@ -7,31 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		452A26E02191278C00B176C5 /* CVNetLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A26DF2191278B00B176C5 /* CVNetLog.swift */; };
 		452A26E2219181D300B176C5 /* CVNetCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A26E1219181D300B176C5 /* CVNetCache.swift */; };
 		452A26E4219184BF00B176C5 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A26E3219184BF00B176C5 /* DictionaryExtension.swift */; };
-		452A26E82191962F00B176C5 /* NSURLRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A26E72191962F00B176C5 /* NSURLRequestExtension.swift */; };
-		452A26EB21919C6D00B176C5 /* CVApiProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A26EA21919C6D00B176C5 /* CVApiProxy.swift */; };
+		452A26E82191962F00B176C5 /* URLRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A26E72191962F00B176C5 /* URLRequestExtension.swift */; };
+		45314FF221A65AFA00C86DA7 /* CVService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45314FF121A65AFA00C86DA7 /* CVService.swift */; };
+		4533E05D21A504CC003FEA24 /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4533E05C21A504CC003FEA24 /* ResultViewModel.swift */; };
+		4533E05F21A50F24003FEA24 /* Property.ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4533E05E21A50F24003FEA24 /* Property.ResultViewController.swift */; };
+		4533E06621A549BC003FEA24 /* CVNetLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4533E06521A549BB003FEA24 /* CVNetLog.swift */; };
+		45360DAC21953167008B86CF /* CVNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45360DAB21953167008B86CF /* CVNetworking.swift */; };
+		45360DB12195871E008B86CF /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45360DB02195871E008B86CF /* MainService.swift */; };
+		4571F3C221A2BDDF003185FD /* LoginApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4571F3C121A2BDDF003185FD /* LoginApiManager.swift */; };
+		457F112921A3A40000A942E6 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457F112821A3A40000A942E6 /* ResultViewController.swift */; };
+		457F112B21A3D9B300A942E6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457F112A21A3D9B300A942E6 /* StringExtension.swift */; };
+		457F112D21A3F4CA00A942E6 /* CVBaseApiManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457F112C21A3F4CA00A942E6 /* CVBaseApiManagerDelegate.swift */; };
+		457F112F21A40FBF00A942E6 /* HomeMsgApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457F112E21A40FBF00A942E6 /* HomeMsgApiManager.swift */; };
 		459AB73C218FE8B400D6C0E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB73B218FE8B400D6C0E2 /* AppDelegate.swift */; };
 		459AB73E218FE8B400D6C0E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB73D218FE8B400D6C0E2 /* ViewController.swift */; };
 		459AB741218FE8B400D6C0E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 459AB73F218FE8B400D6C0E2 /* Main.storyboard */; };
 		459AB743218FE8B500D6C0E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 459AB742218FE8B500D6C0E2 /* Assets.xcassets */; };
 		459AB746218FE8B500D6C0E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 459AB744218FE8B500D6C0E2 /* LaunchScreen.storyboard */; };
-		459AB752218FF4B200D6C0E2 /* CVServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB751218FF4B200D6C0E2 /* CVServiceProtocol.swift */; };
+		459AB752218FF4B200D6C0E2 /* CVServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB751218FF4B200D6C0E2 /* CVServiceDelegate.swift */; };
 		459AB7572190148E00D6C0E2 /* CVMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB7562190148E00D6C0E2 /* CVMemoryCache.swift */; };
 		459AB75A21901EF100D6C0E2 /* CVURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB75921901EF100D6C0E2 /* CVURLResponse.swift */; };
-		459AB75C2190224200D6C0E2 /* CVNetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB75B2190224200D6C0E2 /* CVNetworkingError.swift */; };
 		459AB7612190498F00D6C0E2 /* CVDiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB7602190498F00D6C0E2 /* CVDiskCache.swift */; };
+		45B4BD3321994D450005ADF7 /* CVBaseApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B4BD3221994D450005ADF7 /* CVBaseApiManager.swift */; };
 		505861872BB59199E03CF0AC /* Pods_CVNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3640C6DC8DD9C7655C069AEE /* Pods_CVNetworking.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3640C6DC8DD9C7655C069AEE /* Pods_CVNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CVNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		452A26DF2191278B00B176C5 /* CVNetLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVNetLog.swift; sourceTree = "<group>"; };
 		452A26E1219181D300B176C5 /* CVNetCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVNetCache.swift; sourceTree = "<group>"; };
 		452A26E3219184BF00B176C5 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
-		452A26E72191962F00B176C5 /* NSURLRequestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSURLRequestExtension.swift; sourceTree = "<group>"; };
-		452A26EA21919C6D00B176C5 /* CVApiProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVApiProxy.swift; sourceTree = "<group>"; };
+		452A26E72191962F00B176C5 /* URLRequestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestExtension.swift; sourceTree = "<group>"; };
+		45314FF121A65AFA00C86DA7 /* CVService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVService.swift; sourceTree = "<group>"; };
+		4533E05C21A504CC003FEA24 /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
+		4533E05E21A50F24003FEA24 /* Property.ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.ResultViewController.swift; sourceTree = "<group>"; };
+		4533E06521A549BB003FEA24 /* CVNetLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVNetLog.swift; sourceTree = "<group>"; };
+		45360DAB21953167008B86CF /* CVNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVNetworking.swift; sourceTree = "<group>"; };
+		45360DB02195871E008B86CF /* MainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
+		4571F3C121A2BDDF003185FD /* LoginApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApiManager.swift; sourceTree = "<group>"; };
+		457F112821A3A40000A942E6 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		457F112A21A3D9B300A942E6 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		457F112C21A3F4CA00A942E6 /* CVBaseApiManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBaseApiManagerDelegate.swift; sourceTree = "<group>"; };
+		457F112E21A40FBF00A942E6 /* HomeMsgApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMsgApiManager.swift; sourceTree = "<group>"; };
 		459AB738218FE8B400D6C0E2 /* CVNetworking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CVNetworking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		459AB73B218FE8B400D6C0E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		459AB73D218FE8B400D6C0E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,11 +57,11 @@
 		459AB742218FE8B500D6C0E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		459AB745218FE8B500D6C0E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		459AB747218FE8B500D6C0E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		459AB751218FF4B200D6C0E2 /* CVServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVServiceProtocol.swift; sourceTree = "<group>"; };
+		459AB751218FF4B200D6C0E2 /* CVServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVServiceDelegate.swift; sourceTree = "<group>"; };
 		459AB7562190148E00D6C0E2 /* CVMemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVMemoryCache.swift; sourceTree = "<group>"; };
 		459AB75921901EF100D6C0E2 /* CVURLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVURLResponse.swift; sourceTree = "<group>"; };
-		459AB75B2190224200D6C0E2 /* CVNetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVNetworkingError.swift; sourceTree = "<group>"; };
 		459AB7602190498F00D6C0E2 /* CVDiskCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVDiskCache.swift; sourceTree = "<group>"; };
+		45B4BD3221994D450005ADF7 /* CVBaseApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBaseApiManager.swift; sourceTree = "<group>"; };
 		4D5A105BC30AF830890C7DCC /* Pods-CVNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CVNetworking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CVNetworking/Pods-CVNetworking.debug.xcconfig"; sourceTree = "<group>"; };
 		718B1F98256EF6B72B64433D /* Pods-CVNetworking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CVNetworking.release.xcconfig"; path = "Pods/Target Support Files/Pods-CVNetworking/Pods-CVNetworking.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,20 +78,75 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		452A26DE2191277300B176C5 /* Log */ = {
+		4533E06021A52D96003FEA24 /* Demos */ = {
 			isa = PBXGroup;
 			children = (
-				452A26DF2191278B00B176C5 /* CVNetLog.swift */,
+				4533E06321A52DC1003FEA24 /* Apis */,
+				4533E06221A52DB3003FEA24 /* ViewModels */,
+				4533E06121A52DA3003FEA24 /* ViewControllers */,
+			);
+			path = Demos;
+			sourceTree = "<group>";
+		};
+		4533E06121A52DA3003FEA24 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				457F112821A3A40000A942E6 /* ResultViewController.swift */,
+				4533E05E21A50F24003FEA24 /* Property.ResultViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4533E06221A52DB3003FEA24 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4533E05C21A504CC003FEA24 /* ResultViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4533E06321A52DC1003FEA24 /* Apis */ = {
+			isa = PBXGroup;
+			children = (
+				4571F3C421A2BF02003185FD /* ApiManagers */,
+				4571F3C321A2BEFB003185FD /* Services */,
+			);
+			path = Apis;
+			sourceTree = "<group>";
+		};
+		4533E06421A549B5003FEA24 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				4533E06521A549BB003FEA24 /* CVNetLog.swift */,
 			);
 			path = Log;
 			sourceTree = "<group>";
 		};
-		452A26E921919C4800B176C5 /* ApiProxy */ = {
+		45360DAF21958712008B86CF /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				452A26EA21919C6D00B176C5 /* CVApiProxy.swift */,
+				457F112A21A3D9B300A942E6 /* StringExtension.swift */,
+				459AB73D218FE8B400D6C0E2 /* ViewController.swift */,
+				4533E06021A52D96003FEA24 /* Demos */,
 			);
-			path = ApiProxy;
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		4571F3C321A2BEFB003185FD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				45360DB02195871E008B86CF /* MainService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		4571F3C421A2BF02003185FD /* ApiManagers */ = {
+			isa = PBXGroup;
+			children = (
+				4571F3C121A2BDDF003185FD /* LoginApiManager.swift */,
+				457F112E21A40FBF00A942E6 /* HomeMsgApiManager.swift */,
+			);
+			path = ApiManagers;
 			sourceTree = "<group>";
 		};
 		459AB72F218FE8B400D6C0E2 = {
@@ -97,9 +170,9 @@
 		459AB73A218FE8B400D6C0E2 /* CVNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				45360DAF21958712008B86CF /* Demo */,
 				459AB74D218FF42000D6C0E2 /* CVNetworking */,
 				459AB73B218FE8B400D6C0E2 /* AppDelegate.swift */,
-				459AB73D218FE8B400D6C0E2 /* ViewController.swift */,
 				459AB73F218FE8B400D6C0E2 /* Main.storyboard */,
 				459AB742218FE8B500D6C0E2 /* Assets.xcassets */,
 				459AB744218FE8B500D6C0E2 /* LaunchScreen.storyboard */,
@@ -111,7 +184,8 @@
 		459AB74D218FF42000D6C0E2 /* CVNetworking */ = {
 			isa = PBXGroup;
 			children = (
-				452A26E921919C4800B176C5 /* ApiProxy */,
+				45360DAB21953167008B86CF /* CVNetworking.swift */,
+				45B4BD3121994D200005ADF7 /* BaseApiManager */,
 				459AB750218FF45300D6C0E2 /* Services */,
 				459AB74F218FF44700D6C0E2 /* Components */,
 				459AB74E218FF43B00D6C0E2 /* Extensions */,
@@ -123,7 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				452A26E3219184BF00B176C5 /* DictionaryExtension.swift */,
-				452A26E72191962F00B176C5 /* NSURLRequestExtension.swift */,
+				452A26E72191962F00B176C5 /* URLRequestExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -131,8 +205,7 @@
 		459AB74F218FF44700D6C0E2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				452A26DE2191277300B176C5 /* Log */,
-				459AB75D2190237D00D6C0E2 /* Error */,
+				4533E06421A549B5003FEA24 /* Log */,
 				459AB75821901EDA00D6C0E2 /* URLResponse */,
 				459AB7532190140700D6C0E2 /* Cache */,
 			);
@@ -142,7 +215,8 @@
 		459AB750218FF45300D6C0E2 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				459AB751218FF4B200D6C0E2 /* CVServiceProtocol.swift */,
+				45314FF121A65AFA00C86DA7 /* CVService.swift */,
+				459AB751218FF4B200D6C0E2 /* CVServiceDelegate.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -181,12 +255,13 @@
 			path = URLResponse;
 			sourceTree = "<group>";
 		};
-		459AB75D2190237D00D6C0E2 /* Error */ = {
+		45B4BD3121994D200005ADF7 /* BaseApiManager */ = {
 			isa = PBXGroup;
 			children = (
-				459AB75B2190224200D6C0E2 /* CVNetworkingError.swift */,
+				45B4BD3221994D450005ADF7 /* CVBaseApiManager.swift */,
+				457F112C21A3F4CA00A942E6 /* CVBaseApiManagerDelegate.swift */,
 			);
-			path = Error;
+			path = BaseApiManager;
 			sourceTree = "<group>";
 		};
 		913567376E9131FF66CA9196 /* Frameworks */ = {
@@ -283,18 +358,20 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CVNetworking/Pods-CVNetworking-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-CVNetworking/Pods-CVNetworking-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CVNetworking/Pods-CVNetworking-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CVNetworking/Pods-CVNetworking-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		50A7853A32B5A383E92F56EA /* [CP] Check Pods Manifest.lock */ = {
@@ -326,17 +403,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				452A26E82191962F00B176C5 /* NSURLRequestExtension.swift in Sources */,
+				45360DB12195871E008B86CF /* MainService.swift in Sources */,
+				452A26E82191962F00B176C5 /* URLRequestExtension.swift in Sources */,
 				459AB7572190148E00D6C0E2 /* CVMemoryCache.swift in Sources */,
-				459AB752218FF4B200D6C0E2 /* CVServiceProtocol.swift in Sources */,
+				457F112921A3A40000A942E6 /* ResultViewController.swift in Sources */,
+				459AB752218FF4B200D6C0E2 /* CVServiceDelegate.swift in Sources */,
 				452A26E2219181D300B176C5 /* CVNetCache.swift in Sources */,
-				452A26EB21919C6D00B176C5 /* CVApiProxy.swift in Sources */,
+				457F112F21A40FBF00A942E6 /* HomeMsgApiManager.swift in Sources */,
 				459AB75A21901EF100D6C0E2 /* CVURLResponse.swift in Sources */,
+				457F112B21A3D9B300A942E6 /* StringExtension.swift in Sources */,
+				457F112D21A3F4CA00A942E6 /* CVBaseApiManagerDelegate.swift in Sources */,
+				4533E05D21A504CC003FEA24 /* ResultViewModel.swift in Sources */,
 				452A26E4219184BF00B176C5 /* DictionaryExtension.swift in Sources */,
 				459AB7612190498F00D6C0E2 /* CVDiskCache.swift in Sources */,
+				4571F3C221A2BDDF003185FD /* LoginApiManager.swift in Sources */,
+				4533E06621A549BC003FEA24 /* CVNetLog.swift in Sources */,
 				459AB73E218FE8B400D6C0E2 /* ViewController.swift in Sources */,
-				452A26E02191278C00B176C5 /* CVNetLog.swift in Sources */,
-				459AB75C2190224200D6C0E2 /* CVNetworkingError.swift in Sources */,
+				45360DAC21953167008B86CF /* CVNetworking.swift in Sources */,
+				45B4BD3321994D450005ADF7 /* CVBaseApiManager.swift in Sources */,
+				45314FF221A65AFA00C86DA7 /* CVService.swift in Sources */,
+				4533E05F21A50F24003FEA24 /* Property.ResultViewController.swift in Sources */,
 				459AB73C218FE8B400D6C0E2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -51,20 +51,19 @@ extension CVDiskCache {
         let data: Data?
         do {
             data = try JSONSerialization.data(withJSONObject: [
-                "content" : response.responseData,
+                "content" : response.data!,
                 "lastUpdateTime" : Date().timeIntervalSince1970,
                 "cacheTime" : cacheTime
-            ], options: JSONSerialization.WritingOptions.prettyPrinted)
+            ], options: .prettyPrinted)
             if let dd = data {
                 let filePath = cachePath + "/" + key + pathExtension
                 createFolder(at: cachePath)
                 createFile(at: filePath, for: dd)
             }
             
-        } catch let error as NSError {
+        } catch {
             CVNetLog(error.localizedDescription)
         }
-        CVNetLog("在catch以后看看是否执行")
     }
 
     /// 清空所有缓存
