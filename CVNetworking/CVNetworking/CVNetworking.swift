@@ -7,7 +7,9 @@
 //
 
 import Foundation
+import UIKit
 import Alamofire
+import CommonCrypto
 
 /// api 的网络环境
 public enum CVApiEnvironment {
@@ -45,15 +47,25 @@ extension CVRequestType {
 
 
 /// 缓存策略
-struct CVApiManagerCachePolicy: OptionSet {
+public struct CVApiManagerCachePolicy: OptionSet {
     
-    var rawValue: UInt
+    public var rawValue: UInt
     
     static var noCache = CVApiManagerCachePolicy(rawValue: 0)
     static var memory = CVApiManagerCachePolicy(rawValue: 1 << 1)
     static var disk = CVApiManagerCachePolicy(rawValue: 1 << 2)
+    
+    public init(rawValue: UInt) {
+        self.rawValue = rawValue
+    }
 }
 
+/// 请求优先级
+public enum CVNetworkingPriority: Int {
+    case required = 1            // 只进行请求网络，数据同步较及时
+    case high = 2                // 网络请求优先级较高，安全性较高，请求失败后会尝试提取缓存
+    case low = 3                 // 默认属性，网络请求优先级较低，性能较高，有缓存取缓存，无缓存再请求
+}
 
 /*****************************************************************/
 /**                                扩展                           */
@@ -66,6 +78,8 @@ struct ExtendKey {
     static var fullParams: String = ""
     static var service: String = ""
 }
+
+// MARK: -
 extension Error {
     
     var errorType: CVNetworkingError {
@@ -79,28 +93,21 @@ extension Error {
     
 }
 
-extension Dictionary {
+/// 将字典中的keys按照字母排序并用‘=’拼接，返回数组
+func SortedParamters(_ paramters: [String:Any], asc: Bool = true) -> [String] {
     
-    /// 将字典中的数据转换成，拼接成一个字符串
-    func transformToUrlParamString() -> String {
-        var result = ""
-        
-        var index = 0
-        for (key, value) in self {
-            if index == 0 {
-                result = "?\(key)=\(value)"
-            } else {
-                result += "&\(key)=\(value)"
-            }
-            index += 1
-        }
-        return result
+    guard paramters.count > 0 else { return [] }
+    // 先将params按照key排序
+    let sortParams = paramters.sorted { (str1, str2) -> Bool in
+        return str1.key < str2.key
     }
-    
-    /// 将字典中的keys按照字母排序
-    
+    // 将params中的key和value拼接起来，返回到数组中
+    return sortParams.map { (str) -> String in
+        return "\(str.key)=\(str.value)"
+    }
 }
 
+// MARK: -
 extension Request {
     
     /// 有效的参数
@@ -136,3 +143,24 @@ extension Request {
 }
 
 
+
+
+extension String  {
+    var md5: String! {
+        let str = self.cString(using: String.Encoding.utf8)
+        let strLen = CUnsignedInt(self.lengthOfBytes(using: String.Encoding.utf8))
+        let digestLen = Int(CC_MD5_DIGEST_LENGTH)
+        let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
+        CC_MD5(str!, strLen, result)
+        return stringFromResult(result, length: digestLen)
+    }
+    
+    private func stringFromResult(_ bytes: UnsafeMutablePointer<CUnsignedChar>, length: Int) -> String{
+        let hash = NSMutableString()
+        for i in 0..<length {
+            hash.appendFormat("%02x", bytes[i])
+        }
+        free(bytes)
+        return String(format: hash as String)
+    }
+}

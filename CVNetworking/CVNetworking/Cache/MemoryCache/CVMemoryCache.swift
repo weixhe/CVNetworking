@@ -36,10 +36,11 @@ extension CVMemoryCache {
     
     /// 保存缓存，并设置缓存时间
     func saveCache(response: CVURLResponse, key: NSString, cacheTime: TimeInterval) {
+        guard let data = response.data else { return }
         let cacheObj = self.cache.object(forKey: key) ?? CVCachedObject()
         
         cacheObj.cacheTime = cacheTime
-        cacheObj.updateContent(response.data!)
+        cacheObj.updateContent(data)
         
         self.cache.setObject(cacheObj, forKey: key)
     }

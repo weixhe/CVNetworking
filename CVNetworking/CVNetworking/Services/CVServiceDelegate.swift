@@ -15,23 +15,28 @@ typealias CVCallBackError = (_ error: NSError) -> Void
 
 public protocol CVServiceDelegate: class {
     
-//    /// 创建单例, 实现此属性时请返回一个单例对象
-//    var instance: CVServiceDelegate { get }
-    
     /// 会话管理者，用来请求网络
     var sessionManager: SessionManager { get }
+    
+    /// 请求超时时间
+    var timeout: TimeInterval { get }
+    
     /// api的环境[开发，测试，预发布，发布]
     var apiEnvironment: CVApiEnvironment { set get }
+    
     /// 网络连接状态，是否联网
     var isReachable: Bool { get }
     
     // MARK: -
     /// 基础域名
     var baseURL: String { get }
+    
     /// 基础Header，一些默认，公共的header
     var baseHeaders: HTTPHeaders { get }
+    
     /// 基础的参数，一些默认的，公共的参数
     var baseParamters: [String:Any] { get }
+    
     /// 接口版本，若apiManager中同样设置了版本，则代替这里的字段
     var apiVersion: String { get }
     
@@ -44,25 +49,9 @@ public protocol CVServiceDelegate: class {
     func handleError(error: Error?, errorType: CVNetworkingError) -> Bool
 }
 
-// MARK: -
+// MARK: - 网络请求，读取缓存
 extension CVServiceDelegate {
-    static func identifier() -> String {
-        return NSStringFromClass(Self.self)
-    }
-    
-    /// 基础Header，一些默认，公共的header
-    var baseHeaders: HTTPHeaders {
-        return [:]
-    }
-    /// 基础的参数，一些默认的，公共的参数
-    var baseParams: [String:Any] {
-        return [:]
-    }
-    
-    var apiVersion: String {
-        return ""
-    }
-    
+
     /// 进行网络请求，返回DataRequest，根据Alamofire的链式响应，可以直接调用.response 的方法
     func callApi(with child: CVBaseApiManagerChild) -> DataRequest {
         
@@ -87,17 +76,15 @@ extension CVServiceDelegate {
         // 处理HTTPMethod
         let HTTPMethod: HTTPMethod
         switch child.requestType {
-        case .get:
-            HTTPMethod = .get
-        case .post:
-            HTTPMethod = .post
-        case .put:
-            HTTPMethod = .put
-        case .delete:
-            HTTPMethod = .delete
-        case .head:
-            HTTPMethod = .head
+        case .get:      HTTPMethod = .get
+        case .post:     HTTPMethod = .post
+        case .put:      HTTPMethod = .put
+        case .delete:   HTTPMethod = .delete
+        case .head:     HTTPMethod = .head
         }
+        
+        // 请求之前打印一下GET方式的链接，方便观察
+        CVNetLog(self.logDebug(url: url, paramters: paramters))
         
         let dataRequest = sessionManager.request(url as URLConvertible, method: HTTPMethod, parameters: paramters, headers: headers)
         dataRequest.fullParams = paramters
@@ -105,8 +92,55 @@ extension CVServiceDelegate {
         
         return dataRequest
     }
+    
+    /// 取缓存的数据
+    func fetchDataFromCache(identifyer: String) -> CVURLResponse? {
+        var response: CVURLResponse? = CVNetCache.share.fetchMemoryCache(identifyer: identifyer)
+        if response == nil {
+            response = CVNetCache.share.fetchDiskCache(identifyer: identifyer)
+        }
+        return response
+    }
 }
 
+// MARK: - Defaults
+extension CVServiceDelegate {
+    
+    var baseHeaders: HTTPHeaders {
+        return [:]
+    }
+
+    var baseParams: [String:Any] {
+        return [:]
+    }
+    
+    var apiVersion: String {
+        return ""
+    }
+}
+
+// MARK: - Public Methods
+extension CVServiceDelegate {
+    /// 返回请求的标识字符串
+    func requestIdentifier(child: CVBaseApiManagerChild) -> String {
+        let apiVer: String = child.apiVersion.count > 0 ? child.apiVersion : self.apiVersion.count > 0 ? self.apiVersion : ""
+        var url: String = self.baseURL + "/" + apiVer + "/" + child.methodName
+        
+        var paramters: [String:Any] = [String:Any]()
+        for key in child.paramters.keys { paramters[key] = child.paramters[key] }
+        
+
+        url = handleURL(url)
+        let str = SortedParamters(paramters).joined(separator: "&")
+        if url.contains("?") {
+            return (url + str).md5
+        } else {
+            return (url + "?" + str).md5
+        }
+    }
+}
+
+// MARK: - Private Methods
 private extension CVServiceDelegate {
     // 处理容错，防止域名和方法名之间出现"//"
     func handleURL(_ url: String) -> String {
@@ -119,4 +153,15 @@ private extension CVServiceDelegate {
         
         return result.replacingOccurrences(of: ":/", with: "://")
     }
+    
+    // 打印请求链接
+    @discardableResult
+    func logDebug(url: String, paramters: [String:Any]) -> String {
+        if url.contains("?") {
+            return handleURL(url) + SortedParamters(paramters).joined(separator: "&")
+        } else {
+            return handleURL(url) + "?" + SortedParamters(paramters).joined(separator: "&")
+        }
+    }
 }
+

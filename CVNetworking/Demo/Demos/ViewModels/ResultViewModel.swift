@@ -37,10 +37,9 @@ public class ResultViewModel: NSObject {
     }
 }
 
-
 // MARK: - 请求结果
 extension ResultViewModel: CVBaseApiManagerDelegate {
-    func requestDidSuccess(response: CVURLResponse) {
+    public func requestDidSuccess(response: CVURLResponse) {
         
         if response.requestId == loginRequestID {
             (viewController as! ResultViewController).dataString = "登录成功" + response.contentString
@@ -49,7 +48,7 @@ extension ResultViewModel: CVBaseApiManagerDelegate {
         }
     }
     
-    func requestDidFailed(response: CVURLResponse) {
+    public func requestDidFailed(response: CVURLResponse) {
         if response.requestId == loginRequestID {
             (viewController as! ResultViewController).dataString = "登录失败" + response.contentString
         } else if response.requestId == homeMsgRequestID {

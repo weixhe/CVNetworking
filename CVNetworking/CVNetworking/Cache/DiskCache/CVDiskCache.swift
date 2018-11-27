@@ -9,7 +9,7 @@
 import Foundation
 
 private let cachePath = NSHomeDirectory() + "/Caches/CVNetworking/RequestData"
-private let pathExtension = ".bast"
+private let pathExtension = ".json"
 
 
 class CVDiskCache: NSObject {
@@ -21,25 +21,24 @@ extension CVDiskCache {
     /// 获取缓存, 如果缓存已过期，或者为空，则移除此缓存
     func fetchCache(with key: String) -> CVURLResponse? {
         
-//        let filePath = cachePath + "/" + key + pathExtension
-        let pathUrl = Bundle.main.url(forResource: key, withExtension: pathExtension, subdirectory: cachePath)
-        guard let url = pathUrl else { return nil }
-        
+        let filePath = cachePath + "/" + key + pathExtension
         do {
-            let data = try Data.init(contentsOf: url)
+            let data = try NSData(contentsOfFile: filePath) as Data
             do {
                 let fetchedContent = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as! Dictionary<String, Any>
                 let lastUpdateTime = Date.init(timeIntervalSince1970: fetchedContent["lastUpdateTime"] as! TimeInterval)
                 
                 let timeInterval = Date().timeIntervalSince(lastUpdateTime)
                 if timeInterval <= fetchedContent["cacheTime"] as! TimeInterval {
-                    return CVURLResponse(data: fetchedContent["content"] as! Data)
+                    let responseStr = fetchedContent["content"] as? String
+                    guard let string = responseStr else { return nil }
+                    return CVURLResponse(data: string.data(using: String.Encoding.utf8)!)
                 }
                 
-            } catch let error as NSError {
+            } catch {
                 CVNetLog(error.localizedDescription)
             }
-        } catch let error as NSError {
+        } catch {
             CVNetLog(error.localizedDescription)
         }
         
@@ -50,8 +49,9 @@ extension CVDiskCache {
     func saveCache(response: CVURLResponse, key: String, cacheTime: TimeInterval) {
         let data: Data?
         do {
+            guard let _ = response.data else { return }
             data = try JSONSerialization.data(withJSONObject: [
-                "content" : response.data!,
+                "content" : response.contentString,
                 "lastUpdateTime" : Date().timeIntervalSince1970,
                 "cacheTime" : cacheTime
             ], options: .prettyPrinted)
@@ -93,6 +93,7 @@ func createFile(at path: String, for contents: Data) {
     if manager.fileExists(atPath: path) {
         removeFilePath(at: path)
     }
+    CVNetLog("网络缓存地址：\(path)")
     manager.createFile(atPath: path, contents: contents, attributes: nil)
 }
 

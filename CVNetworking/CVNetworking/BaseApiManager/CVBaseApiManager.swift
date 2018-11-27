@@ -11,25 +11,18 @@ import Alamofire
 
 
 /// 本类封装了基础的网络请求，包括获取参数，监听网络请求的过程
-@objc class CVBaseApiManager: NSObject {
+open class CVBaseApiManager {
 
-    weak var delegate: CVBaseApiManagerDelegate?
-    weak var child: CVBaseApiManagerChild?
+    public weak var delegate: CVBaseApiManagerDelegate?
+    public weak var child: CVBaseApiManagerChild?
     
-    var isLoading: Bool { return getIsloading() }
+    public var isLoading: Bool { return getIsloading() }
     
-    var cachePolicy: CVApiManagerCachePolicy = .noCache     // 缓存策略
-    var memoryCacheSecond: TimeInterval = 3 * 60
-    var diskCacheSecond: TimeInterval = 3 * 60
-    var shouldIgnoreCache: Bool = false // 在有缓存的情况下，是否强制请求网络的控制开关，若为trur,则重新请求并根据缓存策略进行缓存
-    
-    var response: CVURLResponse?      // 请求结果
     
     private var _isLoading = false
     private var requestIDList: [Int] = []
     
-    override init() {
-        super.init()
+    init() {
         
         if let _ = self as? CVBaseApiManagerChild {
             self.child = self as? CVBaseApiManagerChild
@@ -62,32 +55,19 @@ private extension CVBaseApiManager {
     func request() -> Int {
         
         var requestID: Int = 0
-        
-        // 1. 获取参数params
-        let params = self.child?.paramters
-        
-        // 3. 判断是否能够开启请求
         guard self.child != nil else { return requestID }
         
-//        let serviceIdentifier = self.child!.service
         let service = self.child!.service
-        let mothodName = self.child!.methodName
         
-        var response: CVURLResponse?
-        // 4. 先检查一下是否有内存缓存
-        if shouldIgnoreCache == false && response != nil && cachePolicy.contains(.memory) {
-            response = CVNetCache.share.fetchMemoryCache(serviceIdentifier: "asdfas", methodName: mothodName, params: params)
-        }
-        // 5. 先检查一下是否有硬盘缓存
-        if shouldIgnoreCache == false && response != nil && cachePolicy.contains(.disk) {
-            response = CVNetCache.share.fetchDiskCache(serviceIdentifier: "asdfasdfa", methodName: mothodName, params: params)
+        // 查看是否需要先读取缓存
+        if self.child!.config.priority == .low {
+            if let rr = service.fetchDataFromCache(identifyer: service.requestIdentifier(child: self.child!)) {
+                self.handleSuccess(response: rr)
+                return requestID
+            }
         }
         
-        if response != nil { return requestID }
-        
-        // 6. 进行实际的网络请求, 先判断是否联网
-        // 查找service服务，通过service挑起请求
-//        let service = CVServiceFactory.share.fetchService(identifier: self.child!.serviceIdentifier)
+        // 进行实际的网络请求, 先判断是否联网
         if service.isReachable {
             _isLoading = true
             
@@ -98,38 +78,52 @@ private extension CVBaseApiManager {
                 
                 guard let `self` = self else { return }
                 
-                self.response = CVURLResponse.init(data: response.data, requestID: dataRequest.task?.taskIdentifier ?? 0, request: response.request!, error: response.error)
-                self.response!.effectiveParams = dataRequest.effectiveParams
-                self.response!.fullParams = dataRequest.fullParams
+                let response = CVURLResponse.init(data: response.data, requestID: dataRequest.task?.taskIdentifier ?? 0, request: response.request!, error: response.error)
+                response.effectiveParams = dataRequest.effectiveParams
+                response.fullParams = dataRequest.fullParams
                 
                 if response.error == nil {
-                    self.handleSuccess(response: self.response!)
+                    let config = self.child!.config
+                    if config.openCache && config.cachePolicy.contains([.memory]) {
+                        CVNetCache.share.saveMemoryCache(response: response, identifyer: service.requestIdentifier(child: self.child!), cacheTime: config.memoryCacheTime)
+                    }
+                    if config.openCache && config.cachePolicy.contains([.disk]) {
+                        CVNetCache.share.saveDiskCache(response: response, identifyer: service.requestIdentifier(child: self.child!), cacheTime: config.diskCacheTime)
+                    }
+                    self.handleSuccess(response: response)
                 } else {
+                    
+                    if self.child!.config.priority == .high {
+                        if let rr = service.fetchDataFromCache(identifyer: service.requestIdentifier(child: self.child!)) {
+                            self.handleSuccess(response: rr)
+                        }
+                    }
                     
                     var errorType: CVNetworkingError = .others
                     if let error = response.error as NSError? {
                         switch error.code {
-                        case 404:
-                            errorType = .webNotFind
-                        case 408:
-                            errorType = .timeout
-                        case 503:
-                            errorType = .serviceNotAvaliable
-                        default:
-                            errorType = .others
-                            break
+                        case 404:   errorType = .webNotFind
+                        case 408:   errorType = .timeout
+                        case 503:   errorType = .serviceNotAvaliable
+                        default:    errorType = .others
                         }
                     }
                     
                     if service.handleError(error: response.error, errorType: errorType) {
-                        self.response!.error?.errorType = errorType
-                        self.handleFailed(response: self.response!)
+                        response.error?.errorType = errorType
+                        self.handleFailed(response: response)
                     }
                 }
             }
             
             requestID = dataRequest.task?.taskIdentifier ?? 0
         } else {
+            
+            if self.child!.config.priority == .high {
+                if let rr = service.fetchDataFromCache(identifyer: service.requestIdentifier(child: self.child!)) {
+                    self.handleSuccess(response: rr)
+                }
+            }
             // 没有网络
             let error = NSError(domain: service.baseURL, code: CVNetworkingError.noNetwork.rawValue, userInfo: [NSLocalizedDescriptionKey:"Loss network"]) as Error
             if service.handleError(error: error, errorType: .noNetwork) {
@@ -139,6 +133,7 @@ private extension CVBaseApiManager {
         }
         return requestID
     }
+    
     
     /// 请求成功处理
     func handleSuccess(response: CVURLResponse) {

@@ -7,6 +7,6 @@ target 'CVNetworking' do
 
   # Pods for CVNetworking
   pod 'Alamofire'
-  pod 'ReachabilitySwift'
+  pod 'CVSwiftyLoad'
   
 end

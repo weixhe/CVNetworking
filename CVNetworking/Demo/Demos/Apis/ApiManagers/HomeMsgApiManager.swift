@@ -18,11 +18,7 @@ class HomeMsgApiManager: CVBaseApiManager, CVBaseApiManagerChild {
     }
     
     var service: CVServiceDelegate {
-        return MainService.mainInstance
-    }
-    
-    var serviceIdentifier: String {
-        return MainService.identifier()
+        return MainService.instance
     }
     
     var requestType: CVRequestType {
@@ -37,5 +33,11 @@ class HomeMsgApiManager: CVBaseApiManager, CVBaseApiManagerChild {
         return "v2_0"
     }
     
+    var config: CVConfiguration {
+        var config = CVConfiguration()
+        config.cachePolicy = [.memory, .disk]
+        config.priority = .low
+        return config
+    }
     
 }

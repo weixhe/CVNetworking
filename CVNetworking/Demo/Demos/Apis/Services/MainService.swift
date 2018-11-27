@@ -11,29 +11,17 @@ import Alamofire
 
 /// 本类创建主服务
 class MainService: CVService {
-    static let mainInstance = MainService()
-//    lazy var _apiEnvironment: CVApiEnvironment = .develop
-//    lazy var _sessionManager: SessionManager = SessionManager.default
-//}
-//
-//extension MainService /*: CVServiceDelegate*/ {
+    static let instance = MainService()
     
-//    var sessionManager: SessionManager {
-//        return _sessionManager
-//    }
-    
-//    var apiEnvironment: CVApiEnvironment {
-//        set {
-//            _apiEnvironment = newValue
-//        }
-//        get {
-//            return _apiEnvironment
-//        }
-//    }
-    
-//    override var instance: CVServiceDelegate {
-//        return MainService.mainInstance
-//    }
+    override init() {
+        super.init()
+        CVReachability.share.stateChanged { (state: CVNetworkState) in
+            if state == .notReachable {
+                ALERT(message: "没有网")
+            }
+        }
+    }
+
     
     /// 域名
     override var baseURL: String {
@@ -125,4 +113,9 @@ class MainService: CVService {
             return true
         }
     }
+}
+
+
+func ALERT(message: String) {
+    UIAlertView(title: "提示", message: message, delegate: nil, cancelButtonTitle: "OK").show()
 }

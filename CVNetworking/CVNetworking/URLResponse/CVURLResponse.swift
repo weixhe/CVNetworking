@@ -9,8 +9,8 @@
 import UIKit
 
 public class CVURLResponse: NSObject {
-    public var contentString: String { return getContentString() }
-    public var responseObj: [String:Any] { return getResponseObj() }
+    public var contentString: String { return _contentString() }
+    public var responseObj: [String:Any] { return _responseObj() }
     public var data: Data?
     
     public var error: Error?
@@ -51,12 +51,12 @@ public extension CVURLResponse {
 // MARK: - Getter Setter
 private extension CVURLResponse {
     
-    func getContentString() -> String {
+    func _contentString() -> String {
         guard let data = data  else { return "" }
         return String(data: data, encoding: .utf8) ?? ""
     }
     
-    func getResponseObj() -> [String:Any] {
+    func _responseObj() -> [String:Any] {
         let obj: [String:Any]
         do {
             guard let data = data  else { return [:] }

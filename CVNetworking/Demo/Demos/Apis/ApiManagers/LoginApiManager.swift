@@ -20,11 +20,7 @@ class LoginApiManager: CVBaseApiManager, CVBaseApiManagerChild {
     }
     
     var service: CVServiceDelegate {
-        return MainService.mainInstance
-    }
-    
-    var serviceIdentifier: String {
-        return MainService.identifier()
+        return MainService.instance
     }
     
     var requestType: CVRequestType {
@@ -37,6 +33,7 @@ class LoginApiManager: CVBaseApiManager, CVBaseApiManagerChild {
     var apiVersion: String {
         return "v2_0"
     }
+    
 }
 
 extension LoginApiManager {
@@ -44,4 +41,3 @@ extension LoginApiManager {
     
     
 }
-
