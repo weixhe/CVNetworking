@@ -17,32 +17,32 @@ Pod::Spec.new do |s|
 
   # 组件 BaseApiManager
   s.subspec 'BaseApiManager' do |ss|
-    s.source_files = "CVNetworking/CVNetworking/BaseApiManager.{swift}"
+    s.source_files = "CVNetworking/CVNetworking/BaseApiManager/*.{swift}"
   end
 
   # 组件 Services
   s.subspec 'Services' do |ss|
-    s.source_files = "CVNetworking/CVNetworking/Services.{swift}"
+    s.source_files = "CVNetworking/CVNetworking/Services/*.{swift}"
   end
 
   # 组件 URLResponse
   s.subspec 'URLResponse' do |ss|
-    s.source_files = "CVNetworking/CVNetworking/URLResponse.{swift}"
+    s.source_files = "CVNetworking/CVNetworking/URLResponse/*.{swift}"
   end
 
   # 组件 Reachability
   s.subspec 'Reachability' do |ss|
-    s.source_files = "CVNetworking/CVNetworking/Reachability.{swift}"
+    s.source_files = "CVNetworking/CVNetworking/Reachability/*.{swift}"
   end
 
   # 组件 Cache
   s.subspec 'Cache' do |ss|
-    s.source_files = "CVNetworking/CVNetworking/Cache.{swift}"
+    s.source_files = "CVNetworking/CVNetworking/Cache/*.{swift}"
   end
 
   # 组件 Log
   s.subspec 'Log' do |ss|
-    s.source_files = "CVNetworking/CVNetworking/Log.{swift}"
+    s.source_files = "CVNetworking/CVNetworking/Log/*.{swift}"
   end
   
 end
