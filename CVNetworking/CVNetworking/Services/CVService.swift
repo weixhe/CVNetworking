@@ -11,7 +11,7 @@ import UIKit
 import Alamofire
 
 /// 本类是提供请求的服务服务类，你可以继承并重写一些方法，以便完善请求服务， 也可以直接实现 CVServiceDelegate 类，创建你自己的服务类
-open class CVService: CVServiceDelegate {
+open class CVService: CVServiceProxy {
     
     
     lazy private var serviceInstance: SessionManager = SessionManager.default //{ return _serviceInstance() }()
@@ -63,23 +63,6 @@ open class CVService: CVServiceDelegate {
         return true
     }
 }
-
-//// MARK: - Private Methods
-//fileprivate extension CVService {
-//    /// 网络状态变化 监听通知
-//    @objc func theNetworkDidChanged(note: Notification) {
-//        let reachability = note.object as! Reachability
-//        
-//        switch reachability.connection {
-//        case .wifi:
-//            print("Reachable via WiFi")
-//        case .cellular:
-//            print("Reachable via Cellular")
-//        case .none:
-//            print("Network not reachable")
-//        }
-//    }
-//}
 
 // MARK: - Getter Setter
 fileprivate extension CVService {

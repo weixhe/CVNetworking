@@ -13,7 +13,7 @@ import Alamofire
 typealias CVCallBack = (_ response: CVURLResponse) -> Void
 typealias CVCallBackError = (_ error: NSError) -> Void
 
-public protocol CVServiceDelegate: class {
+public protocol CVServiceProxy: class {
     
     /// 会话管理者，用来请求网络
     var sessionManager: SessionManager { get }
@@ -50,7 +50,7 @@ public protocol CVServiceDelegate: class {
 }
 
 // MARK: - 网络请求，读取缓存
-extension CVServiceDelegate {
+extension CVServiceProxy {
 
     /// 进行网络请求，返回DataRequest，根据Alamofire的链式响应，可以直接调用.response 的方法
     func callApi(with child: CVBaseApiManagerChild) -> DataRequest {
@@ -103,24 +103,8 @@ extension CVServiceDelegate {
     }
 }
 
-// MARK: - Defaults
-extension CVServiceDelegate {
-    
-    var baseHeaders: HTTPHeaders {
-        return [:]
-    }
-
-    var baseParams: [String:Any] {
-        return [:]
-    }
-    
-    var apiVersion: String {
-        return ""
-    }
-}
-
 // MARK: - Public Methods
-extension CVServiceDelegate {
+extension CVServiceProxy {
     /// 返回请求的标识字符串
     func requestIdentifier(child: CVBaseApiManagerChild) -> String {
         let apiVer: String = child.apiVersion.count > 0 ? child.apiVersion : self.apiVersion.count > 0 ? self.apiVersion : ""
@@ -141,7 +125,7 @@ extension CVServiceDelegate {
 }
 
 // MARK: - Private Methods
-private extension CVServiceDelegate {
+private extension CVServiceProxy {
     // 处理容错，防止域名和方法名之间出现"//"
     func handleURL(_ url: String) -> String {
         var result = url

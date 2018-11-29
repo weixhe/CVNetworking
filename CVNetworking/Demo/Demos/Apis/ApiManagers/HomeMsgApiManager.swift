@@ -17,7 +17,7 @@ class HomeMsgApiManager: CVBaseApiManager, CVBaseApiManagerChild {
         return ["city_id":1]
     }
     
-    var service: CVServiceDelegate {
+    var service: CVServiceProxy {
         return MainService.instance
     }
     

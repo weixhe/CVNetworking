@@ -19,7 +19,7 @@ class LoginApiManager: CVBaseApiManager, CVBaseApiManagerChild {
         return ["email":"13133333333", "password":"111111"]
     }
     
-    var service: CVServiceDelegate {
+    var service: CVServiceProxy {
         return MainService.instance
     }
     

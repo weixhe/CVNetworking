@@ -16,11 +16,10 @@ open class CVBaseApiManager {
     public weak var delegate: CVBaseApiManagerDelegate?
     public weak var child: CVBaseApiManagerChild?
     
-    public var isLoading: Bool { return getIsloading() }
-    
     
     private var _isLoading = false
     private var requestIDList: [Int] = []
+    private var taskList: [URLSessionTask] = []
     
     init() {
         
@@ -43,8 +42,26 @@ extension CVBaseApiManager {
     /// 加载数据，进行网络请求时直接调用此方法就可，返回请求ID
     @discardableResult
     func loadData() -> Int {
-        
         return self.request()
+    }
+    
+    func cancelRequestID(_ requestID: Int) {
+        if requestIDList.contains(requestID) {
+            let index = (requestIDList as NSArray).index(of: requestID)
+            let task = taskList[index]
+            task.cancel()
+            requestIDList.remove(at: index)
+            taskList.remove(at: index)
+        }
+    }
+    
+    func cancelAll() {
+        for task in taskList {
+            task.cancel()
+        }
+        
+        requestIDList.removeAll()
+        taskList.removeAll()
     }
 }
 
@@ -117,6 +134,8 @@ private extension CVBaseApiManager {
             }
             
             requestID = dataRequest.task?.taskIdentifier ?? 0
+            requestIDList.append(requestID)     // 记录请求ID
+            taskList.append(dataRequest.task!)
         } else {
             
             if self.child!.config.priority == .high {
@@ -138,12 +157,22 @@ private extension CVBaseApiManager {
     /// 请求成功处理
     func handleSuccess(response: CVURLResponse) {
         _isLoading = false
+        if requestIDList.contains(response.requestId) {
+            let index = (requestIDList as NSArray).index(of: response.requestId)
+            requestIDList.remove(at: index)
+            taskList.remove(at: index)
+        }
         self.delegate?.requestDidSuccess(response: response)
     }
     
     /// 请求失败处理
     func handleFailed(response: CVURLResponse) {
         _isLoading = false
+        if requestIDList.contains(response.requestId) {
+            let index = (requestIDList as NSArray).index(of: response.requestId)
+            requestIDList.remove(at: index)
+            taskList.remove(at: index)
+        }
         self.delegate?.requestDidFailed(response: response)
     }
 }
@@ -151,10 +180,6 @@ private extension CVBaseApiManager {
 
 // MARK: - Getter Setter
 private extension CVBaseApiManager {
-    func getIsloading() -> Bool {
-        if self.requestIDList.count == 0 {
-            return false
-        }
-        return _isLoading
-    }
+    
+    
 }

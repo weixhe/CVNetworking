@@ -27,7 +27,7 @@
 		459AB741218FE8B400D6C0E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 459AB73F218FE8B400D6C0E2 /* Main.storyboard */; };
 		459AB743218FE8B500D6C0E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 459AB742218FE8B500D6C0E2 /* Assets.xcassets */; };
 		459AB746218FE8B500D6C0E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 459AB744218FE8B500D6C0E2 /* LaunchScreen.storyboard */; };
-		459AB752218FF4B200D6C0E2 /* CVServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB751218FF4B200D6C0E2 /* CVServiceDelegate.swift */; };
+		459AB752218FF4B200D6C0E2 /* CVServiceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB751218FF4B200D6C0E2 /* CVServiceProxy.swift */; };
 		459AB7572190148E00D6C0E2 /* CVMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB7562190148E00D6C0E2 /* CVMemoryCache.swift */; };
 		459AB75A21901EF100D6C0E2 /* CVURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB75921901EF100D6C0E2 /* CVURLResponse.swift */; };
 		459AB7612190498F00D6C0E2 /* CVDiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB7602190498F00D6C0E2 /* CVDiskCache.swift */; };
@@ -52,8 +52,6 @@
 		454F04F821AD331300C019FE /* CVNetworking-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CVNetworking-Bridging-Header.h"; sourceTree = "<group>"; };
 		454F04F921AD331400C019FE /* SwiftyLoadRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwiftyLoadRegister.m; sourceTree = "<group>"; };
 		454F04FA21AD331400C019FE /* Header-bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Header-bridge.h"; sourceTree = "<group>"; };
-		45532F0D21AFB81A006DB5D3 /* CVNetworking copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CVNetworking copy-Info.plist"; path = "/Users/user/Desktop/CVNetworking/CVNetworking copy-Info.plist"; sourceTree = "<absolute>"; };
-		45532F3221AFC968006DB5D3 /* CVNetworking copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CVNetworking copy2-Info.plist"; path = "/Users/user/Desktop/CVNetworking/CVNetworking copy2-Info.plist"; sourceTree = "<absolute>"; };
 		4571F3C121A2BDDF003185FD /* LoginApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApiManager.swift; sourceTree = "<group>"; };
 		457F112821A3A40000A942E6 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		457F112C21A3F4CA00A942E6 /* CVBaseApiManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBaseApiManagerDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +63,7 @@
 		459AB742218FE8B500D6C0E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		459AB745218FE8B500D6C0E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		459AB747218FE8B500D6C0E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		459AB751218FF4B200D6C0E2 /* CVServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVServiceDelegate.swift; sourceTree = "<group>"; };
+		459AB751218FF4B200D6C0E2 /* CVServiceProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVServiceProxy.swift; sourceTree = "<group>"; };
 		459AB7562190148E00D6C0E2 /* CVMemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVMemoryCache.swift; sourceTree = "<group>"; };
 		459AB75921901EF100D6C0E2 /* CVURLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVURLResponse.swift; sourceTree = "<group>"; };
 		459AB7602190498F00D6C0E2 /* CVDiskCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVDiskCache.swift; sourceTree = "<group>"; };
@@ -178,8 +176,6 @@
 				459AB739218FE8B400D6C0E2 /* Products */,
 				B633AA339060114C10F139A7 /* Pods */,
 				913567376E9131FF66CA9196 /* Frameworks */,
-				45532F0D21AFB81A006DB5D3 /* CVNetworking copy-Info.plist */,
-				45532F3221AFC968006DB5D3 /* CVNetworking copy2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -223,7 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				45314FF121A65AFA00C86DA7 /* CVService.swift */,
-				459AB751218FF4B200D6C0E2 /* CVServiceDelegate.swift */,
+				459AB751218FF4B200D6C0E2 /* CVServiceProxy.swift */,
 				4544D81921A7A20E008BDBEF /* CVConfiguration.swift */,
 			);
 			path = Services;
@@ -423,7 +419,7 @@
 				45360DB12195871E008B86CF /* MainService.swift in Sources */,
 				459AB7572190148E00D6C0E2 /* CVMemoryCache.swift in Sources */,
 				457F112921A3A40000A942E6 /* ResultViewController.swift in Sources */,
-				459AB752218FF4B200D6C0E2 /* CVServiceDelegate.swift in Sources */,
+				459AB752218FF4B200D6C0E2 /* CVServiceProxy.swift in Sources */,
 				452A26E2219181D300B176C5 /* CVNetCache.swift in Sources */,
 				457F112F21A40FBF00A942E6 /* HomeMsgApiManager.swift in Sources */,
 				459AB75A21901EF100D6C0E2 /* CVURLResponse.swift in Sources */,

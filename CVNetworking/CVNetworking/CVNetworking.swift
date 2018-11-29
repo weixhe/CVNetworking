@@ -127,12 +127,12 @@ extension Request {
     }
     
     /// service 服务
-    var service: CVServiceDelegate? {
+    var service: CVServiceProxy? {
         set {
             objc_setAssociatedObject(self, ExtendKey.service, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
         get {
-            return objc_getAssociatedObject(self, ExtendKey.service) as? CVServiceDelegate
+            return objc_getAssociatedObject(self, ExtendKey.service) as? CVServiceProxy
         }
     }
     

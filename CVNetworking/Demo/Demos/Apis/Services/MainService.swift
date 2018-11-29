@@ -46,10 +46,6 @@ class MainService: CVService {
         return _baseURL
     }
     
-//    /// 基础Header，一些默认，公共的header
-//    var baseHeaders: HTTPHeaders {
-//        return [:]
-//    }
     
     /// 基础的参数，一些默认的，公共的参数
     override var baseParamters: [String:Any] {
@@ -61,10 +57,6 @@ class MainService: CVService {
                 "language":"zh",
                 ]
     }
-    
-//    var apiVersion: String {
-//        return ""
-//    }
     
     /// 最后处理参数
     override func handleParamters(_ paramters: [String : Any]) -> [String : Any] {

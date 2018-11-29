@@ -13,7 +13,7 @@ public protocol CVBaseApiManagerChild: class {
     
     var methodName: String { get }  // 请求的路径方法
     var paramters: [String: Any] { get }   // 请求的参数
-    var service: CVServiceDelegate { get }   // 请求所使用的service的标识符
+    var service: CVServiceProxy { get }   // 请求所使用的service的标识符
     var requestType: CVRequestType { get } // 请求的方式： .get, .post, .put, .delete
     var headers: [String: String] { get }
     
