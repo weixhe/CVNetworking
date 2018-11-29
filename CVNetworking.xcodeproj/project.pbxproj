@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37BD10A936D3E71CF2DADED9 /* Pods_CVNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3640C6DC8DD9C7655C069AEE /* Pods_CVNetworking.framework */; };
 		452A26E2219181D300B176C5 /* CVNetCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A26E1219181D300B176C5 /* CVNetCache.swift */; };
 		45314FF221A65AFA00C86DA7 /* CVService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45314FF121A65AFA00C86DA7 /* CVService.swift */; };
 		4533E05D21A504CC003FEA24 /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4533E05C21A504CC003FEA24 /* ResultViewModel.swift */; };
@@ -35,6 +36,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		147A2C0FA237F3ED5016BEF9 /* Pods-CVNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CVNetworking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CVNetworking/Pods-CVNetworking.debug.xcconfig"; sourceTree = "<group>"; };
+		2BBF1A4843591571011AAF78 /* Pods-CVNetworking-Release.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CVNetworking-Release.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CVNetworking-Release/Pods-CVNetworking-Release.debug.xcconfig"; sourceTree = "<group>"; };
+		2DCA4D45F793C9F263189B48 /* Pods-CVNetworking-Release.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CVNetworking-Release.release.xcconfig"; path = "Pods/Target Support Files/Pods-CVNetworking-Release/Pods-CVNetworking-Release.release.xcconfig"; sourceTree = "<group>"; };
 		3640C6DC8DD9C7655C069AEE /* Pods_CVNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CVNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		452A26E1219181D300B176C5 /* CVNetCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVNetCache.swift; sourceTree = "<group>"; };
 		45314FF121A65AFA00C86DA7 /* CVService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVService.swift; sourceTree = "<group>"; };
@@ -48,6 +52,8 @@
 		454F04F821AD331300C019FE /* CVNetworking-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CVNetworking-Bridging-Header.h"; sourceTree = "<group>"; };
 		454F04F921AD331400C019FE /* SwiftyLoadRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwiftyLoadRegister.m; sourceTree = "<group>"; };
 		454F04FA21AD331400C019FE /* Header-bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Header-bridge.h"; sourceTree = "<group>"; };
+		45532F0D21AFB81A006DB5D3 /* CVNetworking copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CVNetworking copy-Info.plist"; path = "/Users/user/Desktop/CVNetworking/CVNetworking copy-Info.plist"; sourceTree = "<absolute>"; };
+		45532F3221AFC968006DB5D3 /* CVNetworking copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CVNetworking copy2-Info.plist"; path = "/Users/user/Desktop/CVNetworking/CVNetworking copy2-Info.plist"; sourceTree = "<absolute>"; };
 		4571F3C121A2BDDF003185FD /* LoginApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApiManager.swift; sourceTree = "<group>"; };
 		457F112821A3A40000A942E6 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		457F112C21A3F4CA00A942E6 /* CVBaseApiManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBaseApiManagerDelegate.swift; sourceTree = "<group>"; };
@@ -64,8 +70,11 @@
 		459AB75921901EF100D6C0E2 /* CVURLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVURLResponse.swift; sourceTree = "<group>"; };
 		459AB7602190498F00D6C0E2 /* CVDiskCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVDiskCache.swift; sourceTree = "<group>"; };
 		45B4BD3221994D450005ADF7 /* CVBaseApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBaseApiManager.swift; sourceTree = "<group>"; };
-		4D5A105BC30AF830890C7DCC /* Pods-CVNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CVNetworking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CVNetworking/Pods-CVNetworking.debug.xcconfig"; sourceTree = "<group>"; };
-		718B1F98256EF6B72B64433D /* Pods-CVNetworking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CVNetworking.release.xcconfig"; path = "Pods/Target Support Files/Pods-CVNetworking/Pods-CVNetworking.release.xcconfig"; sourceTree = "<group>"; };
+		5D13A28E695344B543E122B2 /* Pods-CVNetworking-Adhoc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CVNetworking-Adhoc.release.xcconfig"; path = "Pods/Target Support Files/Pods-CVNetworking-Adhoc/Pods-CVNetworking-Adhoc.release.xcconfig"; sourceTree = "<group>"; };
+		BEF6D34B2055FFB75A57F038 /* Pods_CVNetworking_Release.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CVNetworking_Release.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0C47397B03DEC8EC9E0B907 /* Pods-CVNetworking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CVNetworking.release.xcconfig"; path = "Pods/Target Support Files/Pods-CVNetworking/Pods-CVNetworking.release.xcconfig"; sourceTree = "<group>"; };
+		C57AB1466AC2B640A5603B0F /* Pods-CVNetworking-Adhoc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CVNetworking-Adhoc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CVNetworking-Adhoc/Pods-CVNetworking-Adhoc.debug.xcconfig"; sourceTree = "<group>"; };
+		F8DD4BE1E9F054171BE4C236 /* Pods_CVNetworking_Adhoc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CVNetworking_Adhoc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +83,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				505861872BB59199E03CF0AC /* Pods_CVNetworking.framework in Frameworks */,
+				37BD10A936D3E71CF2DADED9 /* Pods_CVNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +178,8 @@
 				459AB739218FE8B400D6C0E2 /* Products */,
 				B633AA339060114C10F139A7 /* Pods */,
 				913567376E9131FF66CA9196 /* Frameworks */,
+				45532F0D21AFB81A006DB5D3 /* CVNetworking copy-Info.plist */,
+				45532F3221AFC968006DB5D3 /* CVNetworking copy2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -264,6 +276,8 @@
 			isa = PBXGroup;
 			children = (
 				3640C6DC8DD9C7655C069AEE /* Pods_CVNetworking.framework */,
+				BEF6D34B2055FFB75A57F038 /* Pods_CVNetworking_Release.framework */,
+				F8DD4BE1E9F054171BE4C236 /* Pods_CVNetworking_Adhoc.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -271,8 +285,12 @@
 		B633AA339060114C10F139A7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4D5A105BC30AF830890C7DCC /* Pods-CVNetworking.debug.xcconfig */,
-				718B1F98256EF6B72B64433D /* Pods-CVNetworking.release.xcconfig */,
+				147A2C0FA237F3ED5016BEF9 /* Pods-CVNetworking.debug.xcconfig */,
+				C0C47397B03DEC8EC9E0B907 /* Pods-CVNetworking.release.xcconfig */,
+				2BBF1A4843591571011AAF78 /* Pods-CVNetworking-Release.debug.xcconfig */,
+				2DCA4D45F793C9F263189B48 /* Pods-CVNetworking-Release.release.xcconfig */,
+				C57AB1466AC2B640A5603B0F /* Pods-CVNetworking-Adhoc.debug.xcconfig */,
+				5D13A28E695344B543E122B2 /* Pods-CVNetworking-Adhoc.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -357,12 +375,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CVNetworking/Pods-CVNetworking-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CVDevice/CVDevice.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CVDevice.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -499,6 +521,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -562,7 +585,7 @@
 		};
 		459AB74B218FE8B500D6C0E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4D5A105BC30AF830890C7DCC /* Pods-CVNetworking.debug.xcconfig */;
+			baseConfigurationReference = 147A2C0FA237F3ED5016BEF9 /* Pods-CVNetworking.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -580,7 +603,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers\"",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.caven.CVNetworking;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.caven.CVNetworking-Dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CVNetworking/CVNetworking/Reachability/CVNetworking-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -591,7 +614,7 @@
 		};
 		459AB74C218FE8B500D6C0E2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 718B1F98256EF6B72B64433D /* Pods-CVNetworking.release.xcconfig */;
+			baseConfigurationReference = C0C47397B03DEC8EC9E0B907 /* Pods-CVNetworking.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -603,8 +626,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.caven.CVNetworking;
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.caven.CVNetworking-Dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CVNetworking/CVNetworking/Reachability/CVNetworking-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;

@@ -15,13 +15,19 @@ class MainService: CVService {
     
     override init() {
         super.init()
+        
+        #if DEBUG
+        apiEnvironment = .develop
+        #else
+        apiEnvironment = .release
+        #endif
+        
         CVReachability.share.stateChanged { (state: CVNetworkState) in
             if state == .notReachable {
                 ALERT(message: "没有网")
             }
         }
     }
-
     
     /// 域名
     override var baseURL: String {
@@ -32,7 +38,7 @@ class MainService: CVService {
             _baseURL = "http://api.fumubang.net"
         case .test:         // 测试
             _baseURL = "http://api.fumubang.net"
-        case .preRelese:    // 预发布（线上测试）
+        case .adhoc:        // 预发布（线上测试）
             _baseURL = "http://api.fumubang.com"
         case .release:      // 发布
             _baseURL = "http://api.fumubang.com"

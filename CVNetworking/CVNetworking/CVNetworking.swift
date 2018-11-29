@@ -15,7 +15,7 @@ import CommonCrypto
 public enum CVApiEnvironment {
     case develop    // 开发
     case test       // 测试
-    case preRelese  // 预发布（线上测试）
+    case adhoc      // 预发布（线上测试）
     case release    // 发布
 }
 
@@ -25,10 +25,6 @@ public enum CVRequestType: String {
     case put        = "PUT"
     case delete     = "DELETE"
     case head       = "HEAD"
-}
-
-extension CVRequestType {
-    
 }
 
 

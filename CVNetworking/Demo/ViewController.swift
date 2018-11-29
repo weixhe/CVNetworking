@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CVDevice
 
 class ViewController: UIViewController {
 
