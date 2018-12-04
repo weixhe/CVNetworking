@@ -7,20 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		37BD10A936D3E71CF2DADED9 /* Pods_CVNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3640C6DC8DD9C7655C069AEE /* Pods_CVNetworking.framework */; };
+		45147E4321B62BD100B2E607 /* CVBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45147E4221B62BD100B2E607 /* CVBaseManager.swift */; };
 		452A26E2219181D300B176C5 /* CVNetCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A26E1219181D300B176C5 /* CVNetCache.swift */; };
 		45314FF221A65AFA00C86DA7 /* CVService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45314FF121A65AFA00C86DA7 /* CVService.swift */; };
 		4533E05D21A504CC003FEA24 /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4533E05C21A504CC003FEA24 /* ResultViewModel.swift */; };
 		4533E05F21A50F24003FEA24 /* Property.ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4533E05E21A50F24003FEA24 /* Property.ResultViewController.swift */; };
-		4533E06621A549BC003FEA24 /* CVNetLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4533E06521A549BB003FEA24 /* CVNetLog.swift */; };
 		45360DAC21953167008B86CF /* CVNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45360DAB21953167008B86CF /* CVNetworking.swift */; };
 		45360DB12195871E008B86CF /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45360DB02195871E008B86CF /* MainService.swift */; };
+		4543DCF221B0E8C400377DAD /* CVBaseUploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4543DCF121B0E8C400377DAD /* CVBaseUploadManager.swift */; };
+		4543DCF621B10FA600377DAD /* UploadImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4543DCF521B10FA600377DAD /* UploadImageManager.swift */; };
+		4543DCF821B1169E00377DAD /* 10_16.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4543DCF721B1169E00377DAD /* 10_16.jpg */; };
+		4543DCFA21B11C7700377DAD /* MainUploadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4543DCF921B11C7700377DAD /* MainUploadService.swift */; };
 		4544D81A21A7A20E008BDBEF /* CVConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4544D81921A7A20E008BDBEF /* CVConfiguration.swift */; };
 		454F04F221AD20E100C019FE /* CVReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454F04F121AD20E100C019FE /* CVReachability.swift */; };
 		454F04FB21AD331400C019FE /* SwiftyLoadRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 454F04F921AD331400C019FE /* SwiftyLoadRegister.m */; };
 		4571F3C221A2BDDF003185FD /* LoginApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4571F3C121A2BDDF003185FD /* LoginApiManager.swift */; };
 		457F112921A3A40000A942E6 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457F112821A3A40000A942E6 /* ResultViewController.swift */; };
-		457F112D21A3F4CA00A942E6 /* CVBaseApiManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457F112C21A3F4CA00A942E6 /* CVBaseApiManagerDelegate.swift */; };
+		457F112D21A3F4CA00A942E6 /* CVBaseManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457F112C21A3F4CA00A942E6 /* CVBaseManagerDelegate.swift */; };
 		457F112F21A40FBF00A942E6 /* HomeMsgApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457F112E21A40FBF00A942E6 /* HomeMsgApiManager.swift */; };
 		459AB73C218FE8B400D6C0E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB73B218FE8B400D6C0E2 /* AppDelegate.swift */; };
 		459AB73E218FE8B400D6C0E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB73D218FE8B400D6C0E2 /* ViewController.swift */; };
@@ -32,6 +35,7 @@
 		459AB75A21901EF100D6C0E2 /* CVURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB75921901EF100D6C0E2 /* CVURLResponse.swift */; };
 		459AB7612190498F00D6C0E2 /* CVDiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459AB7602190498F00D6C0E2 /* CVDiskCache.swift */; };
 		45B4BD3321994D450005ADF7 /* CVBaseApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B4BD3221994D450005ADF7 /* CVBaseApiManager.swift */; };
+		45C77BED21B51614002FB362 /* CVUploadParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C77BEC21B51614002FB362 /* CVUploadParam.swift */; };
 		505861872BB59199E03CF0AC /* Pods_CVNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3640C6DC8DD9C7655C069AEE /* Pods_CVNetworking.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,13 +44,17 @@
 		2BBF1A4843591571011AAF78 /* Pods-CVNetworking-Release.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CVNetworking-Release.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CVNetworking-Release/Pods-CVNetworking-Release.debug.xcconfig"; sourceTree = "<group>"; };
 		2DCA4D45F793C9F263189B48 /* Pods-CVNetworking-Release.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CVNetworking-Release.release.xcconfig"; path = "Pods/Target Support Files/Pods-CVNetworking-Release/Pods-CVNetworking-Release.release.xcconfig"; sourceTree = "<group>"; };
 		3640C6DC8DD9C7655C069AEE /* Pods_CVNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CVNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		45147E4221B62BD100B2E607 /* CVBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBaseManager.swift; sourceTree = "<group>"; };
 		452A26E1219181D300B176C5 /* CVNetCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVNetCache.swift; sourceTree = "<group>"; };
 		45314FF121A65AFA00C86DA7 /* CVService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVService.swift; sourceTree = "<group>"; };
 		4533E05C21A504CC003FEA24 /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
 		4533E05E21A50F24003FEA24 /* Property.ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.ResultViewController.swift; sourceTree = "<group>"; };
-		4533E06521A549BB003FEA24 /* CVNetLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVNetLog.swift; sourceTree = "<group>"; };
 		45360DAB21953167008B86CF /* CVNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVNetworking.swift; sourceTree = "<group>"; };
 		45360DB02195871E008B86CF /* MainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
+		4543DCF121B0E8C400377DAD /* CVBaseUploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBaseUploadManager.swift; sourceTree = "<group>"; };
+		4543DCF521B10FA600377DAD /* UploadImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageManager.swift; sourceTree = "<group>"; };
+		4543DCF721B1169E00377DAD /* 10_16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10_16.jpg; sourceTree = "<group>"; };
+		4543DCF921B11C7700377DAD /* MainUploadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUploadService.swift; sourceTree = "<group>"; };
 		4544D81921A7A20E008BDBEF /* CVConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVConfiguration.swift; sourceTree = "<group>"; };
 		454F04F121AD20E100C019FE /* CVReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVReachability.swift; sourceTree = "<group>"; };
 		454F04F821AD331300C019FE /* CVNetworking-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CVNetworking-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -54,7 +62,7 @@
 		454F04FA21AD331400C019FE /* Header-bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Header-bridge.h"; sourceTree = "<group>"; };
 		4571F3C121A2BDDF003185FD /* LoginApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApiManager.swift; sourceTree = "<group>"; };
 		457F112821A3A40000A942E6 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
-		457F112C21A3F4CA00A942E6 /* CVBaseApiManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBaseApiManagerDelegate.swift; sourceTree = "<group>"; };
+		457F112C21A3F4CA00A942E6 /* CVBaseManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBaseManagerDelegate.swift; sourceTree = "<group>"; };
 		457F112E21A40FBF00A942E6 /* HomeMsgApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMsgApiManager.swift; sourceTree = "<group>"; };
 		459AB738218FE8B400D6C0E2 /* CVNetworking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CVNetworking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		459AB73B218FE8B400D6C0E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +76,7 @@
 		459AB75921901EF100D6C0E2 /* CVURLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVURLResponse.swift; sourceTree = "<group>"; };
 		459AB7602190498F00D6C0E2 /* CVDiskCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVDiskCache.swift; sourceTree = "<group>"; };
 		45B4BD3221994D450005ADF7 /* CVBaseApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBaseApiManager.swift; sourceTree = "<group>"; };
+		45C77BEC21B51614002FB362 /* CVUploadParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVUploadParam.swift; sourceTree = "<group>"; };
 		5D13A28E695344B543E122B2 /* Pods-CVNetworking-Adhoc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CVNetworking-Adhoc.release.xcconfig"; path = "Pods/Target Support Files/Pods-CVNetworking-Adhoc/Pods-CVNetworking-Adhoc.release.xcconfig"; sourceTree = "<group>"; };
 		BEF6D34B2055FFB75A57F038 /* Pods_CVNetworking_Release.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CVNetworking_Release.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C47397B03DEC8EC9E0B907 /* Pods-CVNetworking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CVNetworking.release.xcconfig"; path = "Pods/Target Support Files/Pods-CVNetworking/Pods-CVNetworking.release.xcconfig"; sourceTree = "<group>"; };
@@ -81,7 +90,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				505861872BB59199E03CF0AC /* Pods_CVNetworking.framework in Frameworks */,
-				37BD10A936D3E71CF2DADED9 /* Pods_CVNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,14 +132,6 @@
 			path = Apis;
 			sourceTree = "<group>";
 		};
-		4533E06421A549B5003FEA24 /* Log */ = {
-			isa = PBXGroup;
-			children = (
-				4533E06521A549BB003FEA24 /* CVNetLog.swift */,
-			);
-			path = Log;
-			sourceTree = "<group>";
-		};
 		45360DAF21958712008B86CF /* Demo */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				45360DB02195871E008B86CF /* MainService.swift */,
+				4543DCF921B11C7700377DAD /* MainUploadService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -165,6 +166,8 @@
 			children = (
 				4571F3C121A2BDDF003185FD /* LoginApiManager.swift */,
 				457F112E21A40FBF00A942E6 /* HomeMsgApiManager.swift */,
+				4543DCF521B10FA600377DAD /* UploadImageManager.swift */,
+				4543DCF721B1169E00377DAD /* 10_16.jpg */,
 			);
 			path = ApiManagers;
 			sourceTree = "<group>";
@@ -206,9 +209,8 @@
 			children = (
 				45360DAB21953167008B86CF /* CVNetworking.swift */,
 				454F04F021AD20CF00C019FE /* Reachability */,
-				45B4BD3121994D200005ADF7 /* BaseApiManager */,
+				45B4BD3121994D200005ADF7 /* Managers */,
 				459AB750218FF45300D6C0E2 /* Services */,
-				4533E06421A549B5003FEA24 /* Log */,
 				459AB75821901EDA00D6C0E2 /* URLResponse */,
 				459AB7532190140700D6C0E2 /* Cache */,
 			);
@@ -220,6 +222,7 @@
 			children = (
 				45314FF121A65AFA00C86DA7 /* CVService.swift */,
 				459AB751218FF4B200D6C0E2 /* CVServiceProxy.swift */,
+				45C77BEC21B51614002FB362 /* CVUploadParam.swift */,
 				4544D81921A7A20E008BDBEF /* CVConfiguration.swift */,
 			);
 			path = Services;
@@ -259,13 +262,15 @@
 			path = URLResponse;
 			sourceTree = "<group>";
 		};
-		45B4BD3121994D200005ADF7 /* BaseApiManager */ = {
+		45B4BD3121994D200005ADF7 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				457F112C21A3F4CA00A942E6 /* CVBaseManagerDelegate.swift */,
+				45147E4221B62BD100B2E607 /* CVBaseManager.swift */,
 				45B4BD3221994D450005ADF7 /* CVBaseApiManager.swift */,
-				457F112C21A3F4CA00A942E6 /* CVBaseApiManagerDelegate.swift */,
+				4543DCF121B0E8C400377DAD /* CVBaseUploadManager.swift */,
 			);
-			path = BaseApiManager;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		913567376E9131FF66CA9196 /* Frameworks */ = {
@@ -355,6 +360,7 @@
 				459AB746218FE8B500D6C0E2 /* LaunchScreen.storyboard in Resources */,
 				459AB743218FE8B500D6C0E2 /* Assets.xcassets in Resources */,
 				459AB741218FE8B400D6C0E2 /* Main.storyboard in Resources */,
+				4543DCF821B1169E00377DAD /* 10_16.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,16 +377,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CVNetworking/Pods-CVNetworking-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/CVDevice/CVDevice.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CVDevice.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -419,15 +421,18 @@
 				45360DB12195871E008B86CF /* MainService.swift in Sources */,
 				459AB7572190148E00D6C0E2 /* CVMemoryCache.swift in Sources */,
 				457F112921A3A40000A942E6 /* ResultViewController.swift in Sources */,
+				45C77BED21B51614002FB362 /* CVUploadParam.swift in Sources */,
 				459AB752218FF4B200D6C0E2 /* CVServiceProxy.swift in Sources */,
+				4543DCF621B10FA600377DAD /* UploadImageManager.swift in Sources */,
 				452A26E2219181D300B176C5 /* CVNetCache.swift in Sources */,
+				45147E4321B62BD100B2E607 /* CVBaseManager.swift in Sources */,
 				457F112F21A40FBF00A942E6 /* HomeMsgApiManager.swift in Sources */,
 				459AB75A21901EF100D6C0E2 /* CVURLResponse.swift in Sources */,
-				457F112D21A3F4CA00A942E6 /* CVBaseApiManagerDelegate.swift in Sources */,
+				457F112D21A3F4CA00A942E6 /* CVBaseManagerDelegate.swift in Sources */,
 				4533E05D21A504CC003FEA24 /* ResultViewModel.swift in Sources */,
 				459AB7612190498F00D6C0E2 /* CVDiskCache.swift in Sources */,
+				4543DCF221B0E8C400377DAD /* CVBaseUploadManager.swift in Sources */,
 				4571F3C221A2BDDF003185FD /* LoginApiManager.swift in Sources */,
-				4533E06621A549BC003FEA24 /* CVNetLog.swift in Sources */,
 				459AB73E218FE8B400D6C0E2 /* ViewController.swift in Sources */,
 				454F04FB21AD331400C019FE /* SwiftyLoadRegister.m in Sources */,
 				45360DAC21953167008B86CF /* CVNetworking.swift in Sources */,
@@ -436,6 +441,7 @@
 				4533E05F21A50F24003FEA24 /* Property.ResultViewController.swift in Sources */,
 				454F04F221AD20E100C019FE /* CVReachability.swift in Sources */,
 				459AB73C218FE8B400D6C0E2 /* AppDelegate.swift in Sources */,
+				4543DCFA21B11C7700377DAD /* MainUploadService.swift in Sources */,
 				4544D81A21A7A20E008BDBEF /* CVConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

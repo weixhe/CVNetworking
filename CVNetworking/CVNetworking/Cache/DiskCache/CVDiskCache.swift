@@ -36,10 +36,8 @@ extension CVDiskCache {
                 }
                 
             } catch {
-                CVNetLog(error.localizedDescription)
             }
         } catch {
-            CVNetLog(error.localizedDescription)
         }
         
         return nil
@@ -62,7 +60,6 @@ extension CVDiskCache {
             }
             
         } catch {
-            CVNetLog(error.localizedDescription)
         }
     }
 
@@ -79,9 +76,7 @@ func createFolder(at path: String) {
         do {
             // 创建文件夹: 1-路径, 2-是否补全中间的路劲, 3-属性
             try manager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
-            
-        } catch let error as NSError {
-            CVNetLog(error.localizedDescription)
+        } catch {
         }
     }
 }
@@ -93,16 +88,17 @@ func createFile(at path: String, for contents: Data) {
     if manager.fileExists(atPath: path) {
         removeFilePath(at: path)
     }
-    CVNetLog("网络缓存地址：\(path)")
+    #if DEBUG
+    print("网络缓存地址：\(path)")
+    #endif
     manager.createFile(atPath: path, contents: contents, attributes: nil)
 }
 
 func removeFilePath(at path: String) {
     
-    let  manager = FileManager.default
+    let manager = FileManager.default
     do {
         try manager.removeItem(atPath: path)
     } catch {
-        CVNetLog("creat false")
     }
 }

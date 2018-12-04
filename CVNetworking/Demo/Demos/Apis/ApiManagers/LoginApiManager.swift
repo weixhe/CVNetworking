@@ -8,14 +8,14 @@
 
 import Foundation
 
-class LoginApiManager: CVBaseApiManager, CVBaseApiManagerChild {
+class LoginApiManager: CVBaseApiManager, CVDataManagerChild {
     
     
     var methodName: String {
         return "login/login_in?format=json"
     }
     
-    var paramters: [String : Any] {
+    var paramters: [String : String] {
         return ["email":"13133333333", "password":"111111"]
     }
     
@@ -30,9 +30,7 @@ class LoginApiManager: CVBaseApiManager, CVBaseApiManagerChild {
     var headers: [String: String] {
         return [:]
     }
-    var apiVersion: String {
-        return "v2_0"
-    }
+    
     
 }
 

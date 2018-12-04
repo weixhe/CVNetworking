@@ -33,7 +33,6 @@ public class CVReachability: NSObject, SelfAware {
     
     
     public static func swiftyLoad() {
-        CVNetLog("开启网络监听")
         CVReachability.share.startListening()
     }
 }

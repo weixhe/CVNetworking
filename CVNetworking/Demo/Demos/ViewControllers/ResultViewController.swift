@@ -19,6 +19,7 @@ class ResultViewController: UIViewController {
     
     lazy var loginBtn: UIButton = { return _loginButton() }()
     lazy var homeBtn: UIButton = { return _homeButton() }()
+    lazy var uploadHeaderBtn: UIButton = { return _uploadHeaderButton() }()
     lazy var scrollView: UIScrollView = { return _crollView() }()
     lazy var label: UILabel = { return _label() }()
 }
@@ -33,6 +34,8 @@ extension ResultViewController {
         
         view.addSubview(loginBtn)
         view.addSubview(homeBtn)
+        view.addSubview(homeBtn)
+        view.addSubview(uploadHeaderBtn)
         view.addSubview(scrollView)
         scrollView.addSubview(label)
     }
@@ -46,6 +49,10 @@ extension ResultViewController {
     
     @objc func onClickHomeAction(sender: UIButton) {
         viewModel.loadHomeMsg()
+    }
+    
+    @objc func onClickUploadHeaderAction(sender: UIButton) {
+        viewModel.uploadImage()
     }
 }
 

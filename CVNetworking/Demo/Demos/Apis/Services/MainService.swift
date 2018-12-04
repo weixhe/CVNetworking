@@ -46,9 +46,13 @@ class MainService: CVService {
         return _baseURL
     }
     
+    override var apiVersion: String {
+        return "v2_0"
+    }
+    
     
     /// 基础的参数，一些默认的，公共的参数
-    override var baseParamters: [String:Any] {
+    override var baseParamters: [String:String] {
         return ["idfa":"A966D0E2-D98A-40E7-8D29-40B92199648A",
                 "req_sec":"1542705146",
                 "version":"3.96",
@@ -59,7 +63,7 @@ class MainService: CVService {
     }
     
     /// 最后处理参数
-    override func handleParamters(_ paramters: [String : Any]) -> [String : Any] {
+    override func handleParamters(_ paramters: [String : String]) -> [String : String] {
         
         let appID = "638481987"
         let appKey = "65GdQcKY6Q1a1eESEtGt7nNBxqWkapzb"

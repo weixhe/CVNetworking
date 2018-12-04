@@ -17,12 +17,15 @@ public class ResultViewModel: NSObject {
     private let homeMsgManager: HomeMsgApiManager = HomeMsgApiManager()
     private var homeMsgRequestID: Int = 0
     
+    private let uploadImageManager: UploadImageManager = UploadImageManager()
+    
     private weak var viewController: UIViewController?
     
     init(viewController: UIViewController) {
         super.init()
         loginManager.delegate = self
         homeMsgManager.delegate = self
+        uploadImageManager.delegate = self
         self.viewController = viewController
     }
     
@@ -35,14 +38,21 @@ public class ResultViewModel: NSObject {
         homeMsgRequestID = homeMsgManager.loadData()
         print("首页ID = \(homeMsgRequestID)")
     }
+    
+    public func uploadImage() {
+        uploadImageManager.upload()
+    }
 }
 
 // MARK: - 请求结果
-extension ResultViewModel: CVBaseApiManagerDelegate {
+extension ResultViewModel: CVBaseManagerDelegate {
     public func requestDidSuccess(response: CVURLResponse) {
         
         if response.requestId == loginRequestID {
             (viewController as! ResultViewController).dataString = "登录成功" + response.contentString
+            
+            uploadImageManager.uid = (response.responseObj["user_info"] as! Dictionary<String,Any>)["uid"] as? String
+            
         } else if response.requestId == homeMsgRequestID {
             (viewController as! ResultViewController).dataString = "首页数据成功" + response.contentString
         }

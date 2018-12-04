@@ -11,29 +11,19 @@ import Alamofire
 
 
 /// 本类封装了基础的网络请求，包括获取参数，监听网络请求的过程
-open class CVBaseApiManager {
+open class CVBaseApiManager: CVBaseManager {
 
-    public weak var delegate: CVBaseApiManagerDelegate?
-    public weak var child: CVBaseApiManagerChild?
+    public weak var delegate: CVBaseManagerDelegate?
+    public weak var child: CVDataManagerChild?
     
-    
-    private var _isLoading = false
-    private var requestIDList: [Int] = []
-    private var taskList: [URLSessionTask] = []
-    
-    init() {
-        
-        if let _ = self as? CVBaseApiManagerChild {
-            self.child = self as? CVBaseApiManagerChild
+    override init() {
+        super.init()
+        if let _ = self as? CVDataManagerChild {
+            self.child = self as? CVDataManagerChild
         } else {
-            assertionFailure("子类必须继承<CVBaseApiManagerChild>协议")
+            assertionFailure("子类必须继承<CVDataManagerChild>协议")
         }
     }
-}
-
-// MARK: - LifeCycle
-extension CVBaseApiManager {
-    
 }
 
 // MARK: - 公有方法
@@ -41,27 +31,8 @@ extension CVBaseApiManager {
     
     /// 加载数据，进行网络请求时直接调用此方法就可，返回请求ID
     @discardableResult
-    func loadData() -> Int {
-        return self.request()
-    }
-    
-    func cancelRequestID(_ requestID: Int) {
-        if requestIDList.contains(requestID) {
-            let index = (requestIDList as NSArray).index(of: requestID)
-            let task = taskList[index]
-            task.cancel()
-            requestIDList.remove(at: index)
-            taskList.remove(at: index)
-        }
-    }
-    
-    func cancelAll() {
-        for task in taskList {
-            task.cancel()
-        }
-        
-        requestIDList.removeAll()
-        taskList.removeAll()
+    public func loadData() -> Int {
+        return request()
     }
 }
 
@@ -80,13 +51,13 @@ private extension CVBaseApiManager {
         if self.child!.config.priority == .low {
             if let rr = service.fetchDataFromCache(identifyer: service.requestIdentifier(child: self.child!)) {
                 self.handleSuccess(response: rr)
+                self.delegate?.requestDidSuccess(response: rr)
                 return requestID
             }
         }
         
         // 进行实际的网络请求, 先判断是否联网
         if service.isReachable {
-            _isLoading = true
             
             // 调起请求
             let dataRequest = service.callApi(with: self.child!)
@@ -100,6 +71,7 @@ private extension CVBaseApiManager {
                 response.fullParams = dataRequest.fullParams
                 
                 if response.error == nil {
+
                     let config = self.child!.config
                     if config.openCache && config.cachePolicy.contains([.memory]) {
                         CVNetCache.share.saveMemoryCache(response: response, identifyer: service.requestIdentifier(child: self.child!), cacheTime: config.memoryCacheTime)
@@ -108,11 +80,13 @@ private extension CVBaseApiManager {
                         CVNetCache.share.saveDiskCache(response: response, identifyer: service.requestIdentifier(child: self.child!), cacheTime: config.diskCacheTime)
                     }
                     self.handleSuccess(response: response)
+                    self.delegate?.requestDidSuccess(response: response)
                 } else {
                     
                     if self.child!.config.priority == .high {
                         if let rr = service.fetchDataFromCache(identifyer: service.requestIdentifier(child: self.child!)) {
                             self.handleSuccess(response: rr)
+                            self.delegate?.requestDidSuccess(response: response)
                         }
                     }
                     
@@ -129,6 +103,7 @@ private extension CVBaseApiManager {
                     if service.handleError(error: response.error, errorType: errorType) {
                         response.error?.errorType = errorType
                         self.handleFailed(response: response)
+                        self.delegate?.requestDidFailed(response: response)
                     }
                 }
             }
@@ -141,45 +116,18 @@ private extension CVBaseApiManager {
             if self.child!.config.priority == .high {
                 if let rr = service.fetchDataFromCache(identifyer: service.requestIdentifier(child: self.child!)) {
                     self.handleSuccess(response: rr)
+                    self.delegate?.requestDidSuccess(response: rr)
                 }
             }
             // 没有网络
             let error = NSError(domain: service.baseURL, code: CVNetworkingError.noNetwork.rawValue, userInfo: [NSLocalizedDescriptionKey:"Loss network"]) as Error
             if service.handleError(error: error, errorType: .noNetwork) {
                 let response = CVURLResponse(error: error)
+                response.error?.errorType = .noNetwork
                 self.handleFailed(response: response)
+                self.delegate?.requestDidFailed(response: response)
             }
         }
         return requestID
     }
-    
-    
-    /// 请求成功处理
-    func handleSuccess(response: CVURLResponse) {
-        _isLoading = false
-        if requestIDList.contains(response.requestId) {
-            let index = (requestIDList as NSArray).index(of: response.requestId)
-            requestIDList.remove(at: index)
-            taskList.remove(at: index)
-        }
-        self.delegate?.requestDidSuccess(response: response)
-    }
-    
-    /// 请求失败处理
-    func handleFailed(response: CVURLResponse) {
-        _isLoading = false
-        if requestIDList.contains(response.requestId) {
-            let index = (requestIDList as NSArray).index(of: response.requestId)
-            requestIDList.remove(at: index)
-            taskList.remove(at: index)
-        }
-        self.delegate?.requestDidFailed(response: response)
-    }
-}
-
-
-// MARK: - Getter Setter
-private extension CVBaseApiManager {
-    
-    
 }

@@ -32,10 +32,11 @@ public protocol CVServiceProxy: class {
     var baseURL: String { get }
     
     /// 基础Header，一些默认，公共的header
-    var baseHeaders: HTTPHeaders { get }
+    var baseHeaders: [String:String] { get }
     
     /// 基础的参数，一些默认的，公共的参数
-    var baseParamters: [String:Any] { get }
+    
+    var baseParamters: [String:String] { get }
     
     /// 接口版本，若apiManager中同样设置了版本，则代替这里的字段
     var apiVersion: String { get }
@@ -43,7 +44,7 @@ public protocol CVServiceProxy: class {
     
     // MARK: - ~ 处理参数和常规错误
     /// 处理参数，本方法会在请求api之前调用，做最有的验证，修改，添加sign等
-    func handleParamters(_ paramters: [String:Any]) -> [String:Any]
+    func handleParamters(_ paramters: [String:String]) -> [String:String]
     
     /// 操作常规错误, 返回true,则会继续调用failure回调; 返回false,则不会调用failure回调, 一般处理一些token失效
     func handleError(error: Error?, errorType: CVNetworkingError) -> Bool
@@ -53,39 +54,17 @@ public protocol CVServiceProxy: class {
 extension CVServiceProxy {
 
     /// 进行网络请求，返回DataRequest，根据Alamofire的链式响应，可以直接调用.response 的方法
-    func callApi(with child: CVBaseApiManagerChild) -> DataRequest {
+    func callApi(with child: CVDataManagerChild) -> DataRequest {
         
-        let apiVer: String = child.apiVersion.count > 0 ? child.apiVersion : self.apiVersion.count > 0 ? self.apiVersion : ""
-        var url: String = self.baseURL + "/" + apiVer + "/" + child.methodName
-        
-        
-        var headers: HTTPHeaders = HTTPHeaders()
-        for key in baseHeaders.keys { headers[key] = baseHeaders[key] }
-        for key in child.headers.keys { headers[key] = child.headers[key] }
-        
-        var paramters: [String:Any] = [String:Any]()
-        for key in baseParamters.keys { paramters[key] = baseParamters[key] }
-        for key in child.paramters.keys { paramters[key] = child.paramters[key] }
- 
-        // 处理url
-        url = handleURL(url)
-        
-        // 处理参数
-        paramters = handleParamters(paramters)
-        
-        // 处理HTTPMethod
-        let HTTPMethod: HTTPMethod
-        switch child.requestType {
-        case .get:      HTTPMethod = .get
-        case .post:     HTTPMethod = .post
-        case .put:      HTTPMethod = .put
-        case .delete:   HTTPMethod = .delete
-        case .head:     HTTPMethod = .head
-        }
+        let url = generateURL(child: child)
+        let headers = generateHeaders(child: child)
+        let paramters = generateParamters(child: child)
+        let HTTPMethod = generateHTTPMethod(child: child)
         
         // 请求之前打印一下GET方式的链接，方便观察
-        CVNetLog(self.logDebug(url: url, paramters: paramters))
-        
+        #if DEBUG
+        print(self.logDebug(url: url, paramters: paramters))
+        #endif
         let dataRequest = sessionManager.request(url as URLConvertible, method: HTTPMethod, parameters: paramters, headers: headers)
         dataRequest.fullParams = paramters
         dataRequest.effectiveParams = child.paramters
@@ -101,14 +80,42 @@ extension CVServiceProxy {
         }
         return response
     }
+    
+    /// 上传文件
+    func uploadFile(with child: CVUploadManagerChild, complete: ((_ request: UploadRequest?, _ error: Error?)->())?) {
+        
+        let url = generateURL(child: child)
+        let headers = generateHeaders(child: child)
+        let paramters = generateParamters(child: child)
+        let HTTPMethod = generateHTTPMethod(child: child)
+        
+        // 请求之前打印一下GET方式的链接，方便观察
+        #if DEBUG
+        print(self.logDebug(url: url, paramters: paramters))
+        #endif
+        sessionManager.upload(multipartFormData: { (formData) in
+            for param in child.uploadParams {
+                formData.append(param.fileData, withName: param.serverName, fileName: param.fileName, mimeType: param.MIMEType)
+            }
+            for (key, value) in paramters {
+                formData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+            }
+        }, to: url, method: HTTPMethod, headers: headers) { (result: SessionManager.MultipartFormDataEncodingResult) in
+            switch result {
+            case .success(let request, _, _):
+                complete?(request, nil)
+            case .failure(let error):
+                complete?(nil, error)
+            }
+        }
+    }
 }
 
 // MARK: - Public Methods
 extension CVServiceProxy {
     /// 返回请求的标识字符串
-    func requestIdentifier(child: CVBaseApiManagerChild) -> String {
-        let apiVer: String = child.apiVersion.count > 0 ? child.apiVersion : self.apiVersion.count > 0 ? self.apiVersion : ""
-        var url: String = self.baseURL + "/" + apiVer + "/" + child.methodName
+    func requestIdentifier(child: CVBaseManagerChild) -> String {
+        var url: String = self.baseURL + "/" + self.apiVersion + "/" + child.methodName
         
         var paramters: [String:Any] = [String:Any]()
         for key in child.paramters.keys { paramters[key] = child.paramters[key] }
@@ -126,7 +133,48 @@ extension CVServiceProxy {
 
 // MARK: - Private Methods
 private extension CVServiceProxy {
-    // 处理容错，防止域名和方法名之间出现"//"
+    
+    /// 生成URL
+    func generateURL(child: CVBaseManagerChild) -> String {
+        let url: String = self.baseURL + "/" + self.apiVersion + "/" + child.methodName
+        // 处理url
+        return handleURL(url)
+    }
+    
+    /// 生成Headers
+    func generateHeaders(child: CVBaseManagerChild) -> [String:String] {
+        var headers: [String:String] = [:]
+        for key in baseHeaders.keys { headers[key] = baseHeaders[key] }
+        for key in child.headers.keys { headers[key] = child.headers[key] }
+        return headers
+    }
+    
+    /// 生成参数
+    func generateParamters(child: CVBaseManagerChild) -> [String:String] {
+        var paramters: [String:String] = [String:String]()
+        for key in baseParamters.keys { paramters[key] = baseParamters[key] }
+        for key in child.paramters.keys { paramters[key] = child.paramters[key] }
+        
+        // 处理参数
+        paramters = handleParamters(paramters)
+        return paramters
+    }
+    
+    /// 生成请求的方式GET,POST
+    func generateHTTPMethod(child: CVBaseManagerChild) -> HTTPMethod {
+        // 处理HTTPMethod
+        let HTTPMethod: HTTPMethod
+        switch child.requestType {
+        case .get:      HTTPMethod = .get
+        case .post:     HTTPMethod = .post
+        case .put:      HTTPMethod = .put
+        case .delete:   HTTPMethod = .delete
+        case .head:     HTTPMethod = .head
+        }
+        return HTTPMethod
+    }
+    
+    /// 处理容错，防止域名和方法名之间出现"//"
     func handleURL(_ url: String) -> String {
         var result = url
         

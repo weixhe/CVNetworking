@@ -37,6 +37,16 @@ extension ResultViewController {
         return btn
     }
     
+    func _uploadHeaderButton() -> UIButton {
+        let btn = UIButton(type: .custom)
+        btn.backgroundColor = UIColor.red
+        btn.setTitle("Upload", for: .normal)
+        btn.setTitleColor(UIColor.white, for: .normal)
+        btn.frame = CGRect(x: 190, y: 10, width: 80, height: 40)
+        btn.addTarget(self, action: #selector(onClickUploadHeaderAction(sender:)), for: .touchUpInside)
+        return btn
+    }
+    
     func _crollView() -> UIScrollView {
         let sc = UIScrollView(frame: CGRect(x: 0, y: 70, width: view.frame.width, height: view.frame.height))
         sc.backgroundColor = UIColor.lightGray

@@ -8,13 +8,13 @@
 
 import Foundation
 
-class HomeMsgApiManager: CVBaseApiManager, CVBaseApiManagerChild {
+class HomeMsgApiManager: CVBaseApiManager, CVDataManagerChild {
     var methodName: String {
         return "other/index_special_recommend_v32?format=json"
     }
     
-    var paramters: [String : Any] {
-        return ["city_id":1]
+    var paramters: [String : String] {
+        return ["city_id":"1"]
     }
     
     var service: CVServiceProxy {
@@ -29,9 +29,6 @@ class HomeMsgApiManager: CVBaseApiManager, CVBaseApiManagerChild {
         return [:]
     }
     
-    var apiVersion: String {
-        return "v2_0"
-    }
     
     var config: CVConfiguration {
         var config = CVConfiguration()

@@ -42,7 +42,7 @@ public extension CVURLResponse {
         self.data = data
         self.requestId = requestID
         self.request = request
-        self.isCache = false
+        self.isCache = requestID != 0 ? false : true
         self.error = error
     }
     

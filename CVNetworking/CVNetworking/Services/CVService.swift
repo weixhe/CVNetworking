@@ -13,7 +13,6 @@ import Alamofire
 /// 本类是提供请求的服务服务类，你可以继承并重写一些方法，以便完善请求服务， 也可以直接实现 CVServiceDelegate 类，创建你自己的服务类
 open class CVService: CVServiceProxy {
     
-    
     lazy private var serviceInstance: SessionManager = SessionManager.default //{ return _serviceInstance() }()
     lazy private var _apiEnvironment: CVApiEnvironment = .develop
     
@@ -47,7 +46,7 @@ open class CVService: CVServiceProxy {
         return [:]
     }
     
-    public var baseParamters: [String : Any] {
+    public var baseParamters: [String : String] {
         return [:]
     }
 
@@ -55,7 +54,7 @@ open class CVService: CVServiceProxy {
         return ""
     }
     
-    public func handleParamters(_ paramters: [String : Any]) -> [String : Any] {
+    public func handleParamters(_ paramters: [String : String]) -> [String : String] {
         return [:]
     }
     
