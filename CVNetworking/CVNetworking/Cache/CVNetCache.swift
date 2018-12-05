@@ -12,8 +12,8 @@ public class CVNetCache: NSObject {
     
     static public let share = CVNetCache()
     
-    public let memoryCache = CVMemoryCache()
-    public let diskCache = CVDiskCache()
+    private let memoryCache = CVMemoryCache()
+    private let diskCache = CVDiskCache()
 }
 
 extension CVNetCache {
