@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version      = "1.0.0"      #版本号，与tag值一致
   s.summary      = "CVNetworking"  #简介
   s.swift_version= "4.2"
-  s.description  = "网络请求类"  #描述
+  s.description  = "网络请求类，二次封装Alamofire，支持GET,POST,PUT等，支持上传图片"  #描述
   s.homepage     = "https://github.com/weixhe/CVNetworking"      #项目主页，不是git地址
   s.license      = { :type => "MIT", :file => "LICENSE" }   #开源协议
   s.author       = { "weixhe" => "workerwei@163.com" }  #作者
@@ -17,32 +17,27 @@ Pod::Spec.new do |s|
 
   # 组件 BaseApiManager
   s.subspec 'BaseApiManager' do |ss|
-    s.source_files = "CVNetworking/CVNetworking/BaseApiManager/*.{swift}"
+    ss.source_files = "CVNetworking/CVNetworking/BaseApiManager/*.{swift}"
   end
 
   # 组件 Services
   s.subspec 'Services' do |ss|
-    s.source_files = "CVNetworking/CVNetworking/Services/*.{swift}"
+    ss.source_files = "CVNetworking/CVNetworking/Services/*.{swift}"
   end
 
   # 组件 URLResponse
   s.subspec 'URLResponse' do |ss|
-    s.source_files = "CVNetworking/CVNetworking/URLResponse/*.{swift}"
+    ss.source_files = "CVNetworking/CVNetworking/URLResponse/*.{swift}"
   end
 
   # 组件 Reachability
   s.subspec 'Reachability' do |ss|
-    s.source_files = "CVNetworking/CVNetworking/Reachability/*.{swift}"
+    ss.source_files = "CVNetworking/CVNetworking/Reachability/*.{swift}"
   end
 
   # 组件 Cache
   s.subspec 'Cache' do |ss|
-    s.source_files = "CVNetworking/CVNetworking/Cache/*.{swift}"
-  end
-
-  # 组件 Log
-  s.subspec 'Log' do |ss|
-    s.source_files = "CVNetworking/CVNetworking/Log/*.{swift}"
+    ss.source_files = "CVNetworking/CVNetworking/Cache/*.{swift}"
   end
   
 end
