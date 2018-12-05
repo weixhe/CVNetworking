@@ -19,7 +19,7 @@ public class CVDiskCache: NSObject {
 extension CVDiskCache {
     
     /// 获取缓存, 如果缓存已过期，或者为空，则移除此缓存
-    func fetchCache(with key: String) -> CVURLResponse? {
+    public func fetchCache(with key: String) -> CVURLResponse? {
         
         let filePath = cachePath + "/" + key + pathExtension
         do {
@@ -44,7 +44,7 @@ extension CVDiskCache {
     }
     
     /// 保存缓存，并设置缓存时间
-    func saveCache(response: CVURLResponse, key: String, cacheTime: TimeInterval) {
+    public func saveCache(response: CVURLResponse, key: String, cacheTime: TimeInterval) {
         let data: Data?
         do {
             guard let _ = response.data else { return }
@@ -64,7 +64,7 @@ extension CVDiskCache {
     }
 
     /// 清空所有缓存
-    func cleanAll() {
+    public func cleanAll() {
         removeFilePath(at: cachePath)
     }
 }

@@ -78,7 +78,7 @@ struct ExtendKey {
 // MARK: -
 extension Error {
     
-    var errorType: CVNetworkingError {
+    public var errorType: CVNetworkingError {
         get {
             return objc_getAssociatedObject(self, ExtendKey.errorType) as? CVNetworkingError ?? .default
         }
@@ -90,7 +90,7 @@ extension Error {
 }
 
 /// 将字典中的keys按照字母排序并用‘=’拼接，返回数组
-func SortedParamters(_ paramters: [String:Any], asc: Bool = true) -> [String] {
+public func SortedParamters(_ paramters: [String:Any], asc: Bool = true) -> [String] {
     
     guard paramters.count > 0 else { return [] }
     // 先将params按照key排序
@@ -107,7 +107,7 @@ func SortedParamters(_ paramters: [String:Any], asc: Bool = true) -> [String] {
 extension Request {
     
     /// 有效的参数
-    var effectiveParams: Dictionary<String, Any>? {
+    public var effectiveParams: Dictionary<String, Any>? {
         set {
             objc_setAssociatedObject(self, ExtendKey.effectiveParamsParams, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
@@ -117,7 +117,7 @@ extension Request {
     }
     
     /// 原始的参数
-    var fullParams: Dictionary<String, Any>? {
+    public var fullParams: Dictionary<String, Any>? {
         set {
             objc_setAssociatedObject(self, ExtendKey.fullParams, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
@@ -127,7 +127,7 @@ extension Request {
     }
     
     /// service 服务
-    var service: CVServiceProxy? {
+    public var service: CVServiceProxy? {
         set {
             objc_setAssociatedObject(self, ExtendKey.service, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
@@ -142,7 +142,7 @@ extension Request {
 
 
 extension String  {
-    var md5: String! {
+    public var md5: String! {
         let str = self.cString(using: String.Encoding.utf8)
         let strLen = CUnsignedInt(self.lengthOfBytes(using: String.Encoding.utf8))
         let digestLen = Int(CC_MD5_DIGEST_LENGTH)

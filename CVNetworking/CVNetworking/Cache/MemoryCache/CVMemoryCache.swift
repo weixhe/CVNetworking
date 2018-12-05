@@ -23,7 +23,7 @@ public class CVMemoryCache: NSObject {
 extension CVMemoryCache {
     
     /// 获取缓存, 如果缓存已过期，或者为空，则移除此缓存
-    func fetchCache(with key: NSString) -> CVURLResponse? {
+    public func fetchCache(with key: NSString) -> CVURLResponse? {
         if let cacheObj = self.cache.object(forKey: key) {
             if cacheObj.isOutdated || cacheObj.isEmpty {
                 self.cache.removeObject(forKey: key)
@@ -35,7 +35,7 @@ extension CVMemoryCache {
     }
     
     /// 保存缓存，并设置缓存时间
-    func saveCache(response: CVURLResponse, key: NSString, cacheTime: TimeInterval) {
+    public func saveCache(response: CVURLResponse, key: NSString, cacheTime: TimeInterval) {
         guard let data = response.data else { return }
         let cacheObj = self.cache.object(forKey: key) ?? CVCachedObject()
         
@@ -46,15 +46,15 @@ extension CVMemoryCache {
     }
     
     /// 清空所有缓存
-    func cleanAll() {
+    public func cleanAll() {
         self.cache.removeAllObjects()
     }
 }
 
 
-/**********************************************************************************/
-/*                                CVCachedObject                                  */
-/**********************************************************************************/
+//*********************************************************************************
+//                               CVCachedObject
+//*********************************************************************************
 
 /// 本类为内存缓存的对象，其中保存了数据源，更新时间，缓存保留时间
 class CVCachedObject: NSObject {

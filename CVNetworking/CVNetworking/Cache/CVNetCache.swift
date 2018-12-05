@@ -10,7 +10,7 @@ import UIKit
 
 public class CVNetCache: NSObject {
     
-    static let share = CVNetCache()
+    static public let share = CVNetCache()
     
     public let memoryCache = CVMemoryCache()
     public let diskCache = CVDiskCache()

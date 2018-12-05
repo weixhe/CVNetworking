@@ -54,7 +54,7 @@ public protocol CVServiceProxy: class {
 extension CVServiceProxy {
 
     /// 进行网络请求，返回DataRequest，根据Alamofire的链式响应，可以直接调用.response 的方法
-    func callApi(with child: CVDataManagerChild) -> DataRequest {
+    public func callApi(with child: CVDataManagerChild) -> DataRequest {
         
         let url = generateURL(child: child)
         let headers = generateHeaders(child: child)
@@ -73,7 +73,7 @@ extension CVServiceProxy {
     }
     
     /// 取缓存的数据
-    func fetchDataFromCache(identifyer: String) -> CVURLResponse? {
+    public func fetchDataFromCache(identifyer: String) -> CVURLResponse? {
         var response: CVURLResponse? = CVNetCache.share.fetchMemoryCache(identifyer: identifyer)
         if response == nil {
             response = CVNetCache.share.fetchDiskCache(identifyer: identifyer)
@@ -82,7 +82,7 @@ extension CVServiceProxy {
     }
     
     /// 上传文件
-    func uploadFile(with child: CVUploadManagerChild, complete: ((_ request: UploadRequest?, _ error: Error?)->())?) {
+    public func uploadFile(with child: CVUploadManagerChild, complete: ((_ request: UploadRequest?, _ error: Error?)->())?) {
         
         let url = generateURL(child: child)
         let headers = generateHeaders(child: child)
@@ -114,7 +114,7 @@ extension CVServiceProxy {
 // MARK: - Public Methods
 extension CVServiceProxy {
     /// 返回请求的标识字符串
-    func requestIdentifier(child: CVBaseManagerChild) -> String {
+    public func requestIdentifier(child: CVBaseManagerChild) -> String {
         var url: String = self.baseURL + "/" + self.apiVersion + "/" + child.methodName
         
         var paramters: [String:Any] = [String:Any]()
