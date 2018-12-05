@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
 
   # 组件 Reachability
   s.subspec 'Reachability' do |ss|
-    ss.source_files = "CVNetworking/CVNetworking/Reachability/*.{swift}"
+    ss.source_files = "CVNetworking/CVNetworking/Reachability/*.{swift, h, m}"
   end
 
   # 组件 Cache
