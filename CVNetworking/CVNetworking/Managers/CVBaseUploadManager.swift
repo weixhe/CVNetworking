@@ -25,7 +25,7 @@ open class CVBaseUploadManager: CVBaseManager {
 
 // MARK: - Public Cycle
 extension CVBaseUploadManager {
-    func upload() {
+    public func upload() {
         return request()
     }
 }

@@ -21,9 +21,9 @@ public class CVURLResponse: NSObject {
     public private(set) var isCache: Bool = false  // 用来判断数据是缓存数据，or 是请求的网络数据
     
     /// 有效的参数，即：出去公共参数之外，通过mananger的child提供
-    var effectiveParams: Dictionary<String, Any>?
+    public var effectiveParams: Dictionary<String, Any>?
     /// 全部的参数，即：公共参数，通过service提供
-    var fullParams: Dictionary<String, Any>?
+    public var fullParams: Dictionary<String, Any>?
 }
 
 // MARK: - Lift Cycle

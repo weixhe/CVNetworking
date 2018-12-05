@@ -11,7 +11,7 @@ import Foundation
 
 // 文件的mineType ：http://www.iana.org/assignments/media-types/media-types.xhtml
 
-enum CVMIMEType: String {
+public enum CVMIMEType: String {
     case audio  = "audio/aac"
     case jpg    = "image/jpg"
     case jpeg   = "image/jpeg"
@@ -23,12 +23,12 @@ enum CVMIMEType: String {
 }
 
 public struct CVUploadParam {
-    let fileData: Data
-    let fileName: String          // 保存到服务器时对应的名字，可不设
-    let serverName: String        // 服务器对应的字段名
-    let MIMEType: String
+    public let fileData: Data
+    public let fileName: String          // 保存到服务器时对应的名字，可不设
+    public let serverName: String        // 服务器对应的字段名
+    public let MIMEType: String
     
-    init(data: Data, fileName: String, serverName: String, MIMEType: CVMIMEType) {
+    public init(data: Data, fileName: String, serverName: String, MIMEType: CVMIMEType) {
         self.fileData = data
         self.fileName = fileName
         self.serverName = serverName

@@ -10,8 +10,8 @@ import Foundation
 import Alamofire
 
 /// 回调方法
-typealias CVCallBack = (_ response: CVURLResponse) -> Void
-typealias CVCallBackError = (_ error: NSError) -> Void
+public typealias CVCallBack = (_ response: CVURLResponse) -> Void
+public typealias CVCallBackError = (_ error: NSError) -> Void
 
 public protocol CVServiceProxy: class {
     

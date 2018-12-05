@@ -8,12 +8,12 @@
 
 import UIKit
 
-class CVNetCache: NSObject {
+public class CVNetCache: NSObject {
     
     static let share = CVNetCache()
     
-    let memoryCache = CVMemoryCache()
-    let diskCache = CVDiskCache()
+    public let memoryCache = CVMemoryCache()
+    public let diskCache = CVDiskCache()
 }
 
 extension CVNetCache {

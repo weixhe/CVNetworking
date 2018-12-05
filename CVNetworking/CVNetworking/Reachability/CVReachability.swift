@@ -9,9 +9,9 @@
 import Foundation
 import Alamofire
 
-typealias OnClosureNetworkStateChanged = (_ state: CVNetworkState)->()
+public typealias OnClosureNetworkStateChanged = (_ state: CVNetworkState)->()
 
-enum CVNetworkState {
+public enum CVNetworkState {
     case unknown     // 未知
     case wwan
     case ethernetOrWiFi // 以太网或wifi
@@ -20,7 +20,7 @@ enum CVNetworkState {
 
 public class CVReachability: NSObject, SelfAware {
     
-    static let share = CVReachability()
+    static public let share = CVReachability()
     
     public var isReachable: Bool { return _isReachable() }
     
@@ -40,15 +40,15 @@ public class CVReachability: NSObject, SelfAware {
 // MARK: - Public Methods
 extension CVReachability {
     
-    func startListening() {
+    public func startListening() {
         reachability.startListening()
     }
     
-    func stopListening() {
+    public func stopListening() {
         reachability.stopListening()
     }
     
-    func stateChanged(state: OnClosureNetworkStateChanged?) {
+    public func stateChanged(state: OnClosureNetworkStateChanged?) {
         stateChanged = state
     }
 }
