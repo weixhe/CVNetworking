@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class CVURLResponse: NSObject {
+open class CVURLResponse: NSObject {
     public var contentString: String { return _contentString() }
     public var responseObj: [String:Any] { return _responseObj() }
     public var data: Data?

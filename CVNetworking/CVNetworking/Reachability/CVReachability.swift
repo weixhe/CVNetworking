@@ -18,7 +18,7 @@ public enum CVNetworkState {
     case notReachable   // 无网
 }
 
-public class CVReachability: NSObject, SelfAware {
+open class CVReachability: NSObject, SelfAware {
     
     static public let share = CVReachability()
     

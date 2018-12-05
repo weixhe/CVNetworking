@@ -12,7 +12,7 @@ private let cachePath = NSHomeDirectory() + "/Caches/CVNetworking/RequestData"
 private let pathExtension = ".json"
 
 
-public class CVDiskCache: NSObject {
+open class CVDiskCache: NSObject {
     
 }
 // MARK: - 公有方法

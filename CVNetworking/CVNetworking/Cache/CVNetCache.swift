@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class CVNetCache: NSObject {
+open class CVNetCache: NSObject {
     
     static public let share = CVNetCache()
     

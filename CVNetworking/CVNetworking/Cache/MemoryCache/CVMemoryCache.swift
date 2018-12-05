@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class CVMemoryCache: NSObject {
+open class CVMemoryCache: NSObject {
     // MARK: - 属性
     
     private let cache = NSCache<NSString, CVCachedObject>()
